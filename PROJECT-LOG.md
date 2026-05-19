@@ -12,11 +12,27 @@ Replication: Lenis (inertia) + Framer Motion useScroll/useTransform (pinned scru
 - [x] Home (HeroField pinned scrubbed signature moment + manifesto + podcast + pillars + gallery + apply)
 - [x] Episodes (filterable grid)
 - [x] Newsletter (6-part format + sample + signup)
-- [ ] Nominate
-- [ ] Sponsors
-- [ ] Events
-- [ ] About
+- [x] Nominate (story + oxblood form card)
+- [x] Sponsors (audience grid + inventory + 3 tiers + inquiry form)
+- [x] Events (what to expect + who + format ledger + waitlist)
+- [x] About (James Chhetree story + beliefs + CTA)
 - Removed obsolete components: Navbar/StickyNav/Footer/HeroSlideshow/ScrollReveal/EpisodeCard/RoomPicker
 
-## STEP 3 — Scroll motion baked in: pending
-## VERIFY + DEPLOY: pending
+## STEP 3 — Scroll motion: DONE
+Lenis inertial smooth-scroll (SmoothScroll.tsx, disabled on reduced-motion).
+Pinned scrubbed hero signature moment (HeroField.tsx — 210vh track, sticky
+field, word scale/translate/letter-spacing + inset parallax + ember sweep
+scrub via Framer useScroll/useTransform). whileInView staggered reveals
+(Reveal.tsx). Sticky-parallax footer ghost word. PageHero parallax across
+all 6 sub-pages. Verified scrub + reduced-motion on live prod.
+
+## VERIFY + DEPLOY: DONE
+- npm run build: success, all 7 routes + 4 API routes.
+- Deployed production: https://owners-circle.vercel.app (READY, aliased).
+- Fixed: removed platform-pinned lightningcss-darwin-arm64 from
+  package.json (broke Vercel Linux build); relinked vercel scope
+  (jchhetree-gmailcoms-projects) which fixed "Not authorized" on finalize.
+- All 7 prod routes 200. Hero scrub verified live. Reduced-motion verified.
+- Live site is now Dir 2 "The Field" (replaced old gold/pink v1).
+
+STATUS: COMPLETE.
