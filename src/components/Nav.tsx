@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/data/nav";
+import { WaitlistButton } from "@/components/Waitlist";
 
 /**
  * Dir 2 chrome: tiny centered tracked wordmark, minimal nav, single bone pill.
@@ -89,9 +90,13 @@ export function Nav({ tone = "field" }: { tone?: "field" | "paper" }) {
           gap: "16px",
         }}
       >
-        <Link href="/newsletter" className="pill oc-cta">
-          Join the Circle
-        </Link>
+        <WaitlistButton
+          intent="Waitlist"
+          source="Nav"
+          className="pill oc-cta"
+        >
+          Join the Waitlist
+        </WaitlistButton>
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
@@ -137,14 +142,15 @@ export function Nav({ tone = "field" }: { tone?: "field" | "paper" }) {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/newsletter"
-            onClick={() => setOpen(false)}
+          <WaitlistButton
+            intent="Waitlist"
+            source="Nav (mobile)"
             className="pill"
             style={{ marginTop: "20px", alignSelf: "flex-start" }}
+            onClick={() => setOpen(false)}
           >
-            Join the Circle
-          </Link>
+            Join the Waitlist
+          </WaitlistButton>
         </div>
       )}
 

@@ -3,6 +3,7 @@ import { Inter_Tight, Fraunces } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SiteFooter } from "@/components/SiteFooter";
+import { WaitlistProvider } from "@/components/Waitlist";
 
 const inter = Inter_Tight({
   subsets: ["latin"],
@@ -52,8 +53,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body>
         <SmoothScroll />
-        <main>{children}</main>
-        <SiteFooter />
+        <WaitlistProvider>
+          <main>{children}</main>
+          <SiteFooter />
+        </WaitlistProvider>
       </body>
     </html>
   );

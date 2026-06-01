@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
+import { WaitlistButton } from "@/components/Waitlist";
 
 const beliefs = [
   { n: "01", t: "Real over famous", d: "We spotlight people building real companies — not the loudest, the realest." },
@@ -97,12 +97,21 @@ export default function AboutPage() {
             </em>
           </h2>
           <div style={{ marginTop: "44px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/newsletter" className="pill" style={{ background: "var(--field)", color: "var(--bone)" }}>
-              Join the Circle
-            </Link>
-            <Link href="/nominate" className="pill-outline on-paper">
+            <WaitlistButton
+              intent="Waitlist"
+              source="About · CTA"
+              className="pill"
+              style={{ background: "var(--field)", color: "var(--bone)" }}
+            >
+              Join the Waitlist
+            </WaitlistButton>
+            <WaitlistButton
+              intent="Nominate a guest"
+              source="About · Nominate a Guest"
+              className="pill-outline on-paper"
+            >
               Nominate a Guest
-            </Link>
+            </WaitlistButton>
           </div>
         </Reveal>
       </section>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import { WaitlistButton } from "@/components/Waitlist";
 
 const cols = [
   {
@@ -100,13 +101,14 @@ export function SiteFooter() {
           </em>
         </h2>
 
-        <Link
-          href="/newsletter"
+        <WaitlistButton
+          intent="Waitlist"
+          source="Footer"
           className="pill"
           style={{ marginTop: "44px", display: "inline-flex" }}
         >
-          Join the Circle
-        </Link>
+          Join the Waitlist
+        </WaitlistButton>
 
         <div
           className="oc-foot-cols"

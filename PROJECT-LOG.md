@@ -35,4 +35,57 @@ all 6 sub-pages. Verified scrub + reduced-motion on live prod.
 - All 7 prod routes 200. Hero scrub verified live. Reduced-motion verified.
 - Live site is now Dir 2 "The Field" (replaced old gold/pink v1).
 
-STATUS: COMPLETE.
+STATUS: Dir 2 build COMPLETE.
+
+## STEP 4 — Waitlist CTA + single shared form + more animations (2026-05-19)
+
+### Task 1 — One shared site-wide capture form
+- New `src/components/Waitlist.tsx`: `WaitlistProvider` (context + the one
+  shared modal) + `WaitlistButton` (the reusable CTA). Mounted once in
+  `layout.tsx`. Modal = Name, Email, "What are you here for?" select
+  (auto-preset to the opening button's intent, user-editable), optional
+  message. Esc/backdrop close, body-scroll lock, AnimatePresence in/out,
+  reduced-motion safe.
+- Every CTA site-wide now opens this single modal (no parallel forms):
+  Nav (desktop + mobile) → "Join the Waitlist"; HeroField bone pill →
+  "Join the Waitlist" + Watch Episodes; Home Watch Episodes / Nominate a
+  Guest / Sponsor / Partner; SiteFooter primary pill → "Join the
+  Waitlist"; About CTAs; Sponsors tier "Inquire" buttons. NewsletterForm,
+  GuestNominationForm, SponsorInquiryForm, EventWaitlistForm rewritten as
+  thin triggers of the shared modal with their intent preset (no dead
+  parallel forms). Premium pill styling preserved throughout.
+- New `src/app/api/waitlist/route.ts`: POSTs to FormSubmit AJAX
+  (jchhetree@gmail.com), classic form-encoded fallback, Upstash persist if
+  configured, console.log always; always returns 200 (graceful
+  degradation). Returns `delivery` + `upstreamStatus` so delivery state is
+  observable.
+- CAVEAT (honest): FormSubmit.co is currently serving a Cloudflare managed
+  challenge to ALL server-side requests (403 on both /ajax/ and classic,
+  every header combination tried, from both this machine and Vercel
+  egress). So the one-time activation email to jchhetree@gmail.com is NOT
+  yet triggered and email delivery is deferred until FormSubmit's challenge
+  clears (it cycles this protection). Route self-heals automatically when
+  it does. No submission is lost (console-logged in function logs). A
+  reliable provider swap (e.g. Web3Forms) is the durable fix if FormSubmit
+  stays gated — flagged for James.
+
+### Task 2 — More animations (additive, Dir 2 preserved)
+- New `src/components/Parallax.tsx`: `Parallax` (scroll-linked y / scale /
+  opacity, transform-only, willChange transform, reduced-motion → static)
+  and `StickyScrub` (pins a heading + scrubs scale/letter-spacing/opacity
+  + a progress rail, reduced-motion → static).
+- Home: manifesto block drifts up on scroll; podcast feature image gets a
+  parallaxing texture layer behind pinned copy; PILLAR LEDGER is now a
+  second sticky-scrubbed signature moment (240vh track, pinned scrubbed
+  heading + progress rail, rows still stagger-reveal); gallery tiles get
+  differential parallax. Original hero scrub unchanged (no regression,
+  verified).
+- 60fps (transform/opacity only), zero CLS (absolute decorative layers,
+  no layout-animated props), prefers-reduced-motion fully collapses ALL
+  added motion to static (Playwright-verified on prod).
+
+DEPLOY: Production https://owners-circle.vercel.app — alias confirmed on
+newest deployment (dpl_JCrj2Vz2ynvqLc3oS5LTSFkfM79s, READY). All 7 routes
++ /api/waitlist 200. Build clean. Playwright on live prod: 3 CTAs open the
+same modal w/ correct intent, hero scrub intact, sticky-scrub + gallery
+parallax working, reduced-motion disables all motion.

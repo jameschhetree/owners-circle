@@ -5,6 +5,8 @@ import { Nav } from "@/components/Nav";
 import { HeroField } from "@/components/HeroField";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { NewsletterForm } from "@/components/NewsletterForm";
+import { WaitlistButton } from "@/components/Waitlist";
+import { Parallax, StickyScrub } from "@/components/Parallax";
 
 const podcastRows = [
   { c: "Growth · Ep 02", h: "The systems behind a scaling operator." },
@@ -38,7 +40,12 @@ export default function Home() {
       {/* MANIFESTO — vast whitespace */}
       <section className="on-paper-sec" style={{ padding: "clamp(120px,18vw,200px) 56px" }}>
         <Reveal className="oc-wrap" >
-          <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
+          <Parallax
+            style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}
+            y={-46}
+            opacityFrom={0.72}
+            opacityTo={0.72}
+          >
             <span className="tag" style={{ color: "var(--field)", display: "block", marginBottom: "40px" }}>
               Why Owner&apos;s Circle exists
             </span>
@@ -79,7 +86,7 @@ export default function Home() {
                 margin: "60px auto 0",
               }}
             />
-          </div>
+          </Parallax>
         </Reveal>
       </section>
 
@@ -109,7 +116,19 @@ export default function Home() {
 
           <Reveal delay={0.05}>
             <div className="oc-feat">
-              <div className="oc-feat-big tex-deep tex-frame">
+              <div className="oc-feat-big tex-frame">
+                <Parallax
+                  ariaHidden
+                  className="tex-deep"
+                  style={{
+                    position: "absolute",
+                    inset: "-12% 0",
+                    zIndex: 0,
+                  }}
+                  y={56}
+                  scaleFrom={1.06}
+                  scaleTo={1.06}
+                />
                 <div
                   style={{
                     position: "absolute",
@@ -184,42 +203,47 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
-                <Link
-                  href="/episodes"
+                <WaitlistButton
+                  intent="Newsletter"
+                  source="Home · Watch Episodes"
                   className="pill"
                   style={{ marginTop: "30px", display: "inline-flex" }}
                 >
                   Watch Episodes
-                </Link>
+                </WaitlistButton>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* PILLARS — ledger rows on paper */}
+      {/* PILLARS — sticky scrubbed ledger (signature pinned moment #2) */}
       <section className="on-paper-sec" style={{ padding: "clamp(110px,15vw,160px) 56px" }}>
+        <StickyScrub
+          trackHeight="240vh"
+          heading={
+            <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+              <span className="tag" style={{ color: "var(--field)", display: "block", marginBottom: "26px" }}>
+                What we talk about
+              </span>
+              <h2
+                className="serif"
+                style={{
+                  fontSize: "clamp(34px,5.5vw,64px)",
+                  lineHeight: 1.05,
+                  color: "var(--ink)",
+                  maxWidth: "760px",
+                }}
+              >
+                Five things that decide whether you{" "}
+                <em className="serif-it" style={{ color: "var(--field)" }}>
+                  build something real.
+                </em>
+              </h2>
+            </div>
+          }
+        >
         <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
-          <Reveal>
-            <span className="tag" style={{ color: "var(--field)", display: "block", marginBottom: "26px" }}>
-              What we talk about
-            </span>
-            <h2
-              className="serif"
-              style={{
-                fontSize: "clamp(34px,5.5vw,64px)",
-                lineHeight: 1.05,
-                color: "var(--ink)",
-                maxWidth: "760px",
-                marginBottom: "70px",
-              }}
-            >
-              Five things that decide whether you{" "}
-              <em className="serif-it" style={{ color: "var(--field)" }}>
-                build something real.
-              </em>
-            </h2>
-          </Reveal>
           <RevealGroup>
             {pillars.map((p) => (
               <RevealItem key={p.n}>
@@ -255,6 +279,7 @@ export default function Home() {
             ))}
           </RevealGroup>
         </div>
+        </StickyScrub>
       </section>
 
       {/* NEWSLETTER — staggered gallery + signup */}
@@ -266,9 +291,16 @@ export default function Home() {
           >
             {galleryTex.map((t, i) => (
               <RevealItem key={i}>
-                <div
+                <Parallax
+                  ariaHidden
                   className={t.cls}
-                  style={{ height: `${t.h}px`, marginTop: `${t.mt}px` }}
+                  style={{
+                    height: `${t.h}px`,
+                    marginTop: `${t.mt}px`,
+                  }}
+                  y={i % 2 === 0 ? -54 : -22}
+                  scaleFrom={1.04}
+                  scaleTo={1.04}
                 />
               </RevealItem>
             ))}
@@ -337,9 +369,14 @@ export default function Home() {
               tech leaders with real stories, real lessons, and real rooms. They
               don&apos;t need to be famous. They need to be real.
             </p>
-            <Link href="/nominate" className="pill" style={{ marginTop: "42px", display: "inline-flex" }}>
+            <WaitlistButton
+              intent="Nominate a guest"
+              source="Home · Nominate a Guest"
+              className="pill"
+              style={{ marginTop: "42px", display: "inline-flex" }}
+            >
               Nominate a Guest
-            </Link>
+            </WaitlistButton>
           </Reveal>
 
           <Reveal className="oc-apply-c oc-apply-c2" delay={0.06}>
@@ -365,9 +402,14 @@ export default function Home() {
               Partner across the podcast, newsletter, and live events to reach
               founders, owners, executives, creators, and decision-makers.
             </p>
-            <Link href="/sponsors" className="pill" style={{ marginTop: "42px", display: "inline-flex" }}>
+            <WaitlistButton
+              intent="Sponsor / Partner"
+              source="Home · Sponsor / Partner"
+              className="pill"
+              style={{ marginTop: "42px", display: "inline-flex" }}
+            >
               Sponsor / Partner
-            </Link>
+            </WaitlistButton>
           </Reveal>
         </div>
       </section>

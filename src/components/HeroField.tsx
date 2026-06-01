@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
+import { WaitlistButton } from "@/components/Waitlist";
 import {
   motion,
   useScroll,
@@ -163,19 +163,21 @@ export function HeroField() {
           >
             DMV-first. Built to go national.
           </span>
-          <Link
-            href="/newsletter"
+          <WaitlistButton
+            intent="Waitlist"
+            source="Home hero"
             className="pill"
             style={{ background: "var(--bone)", color: "var(--field)" }}
           >
-            Join the Circle
-          </Link>
-          <Link
-            href="/episodes"
+            Join the Waitlist
+          </WaitlistButton>
+          <WaitlistButton
+            intent="Newsletter"
+            source="Home hero · Watch Episodes"
             className="pill-outline on-field"
           >
             Watch Episodes
-          </Link>
+          </WaitlistButton>
           <span
             style={{
               fontSize: "11px",

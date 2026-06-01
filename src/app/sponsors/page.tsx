@@ -4,6 +4,7 @@ import { Nav } from "@/components/Nav";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { SponsorInquiryForm } from "@/components/SponsorInquiryForm";
+import { WaitlistButton } from "@/components/Waitlist";
 import { sponsorTiers, sponsorInventory, audienceTypes } from "@/data/sponsors";
 
 export default function SponsorsPage() {
@@ -115,9 +116,14 @@ export default function SponsorsPage() {
                       </li>
                     ))}
                   </ul>
-                  <a href="#inquire" className={t.featured ? "pill" : "pill-outline on-paper"} style={{ fontSize: "11px" }}>
+                  <WaitlistButton
+                    intent="Sponsor / Partner"
+                    source={`Sponsors · ${t.name} tier`}
+                    className={t.featured ? "pill" : "pill-outline on-paper"}
+                    style={{ fontSize: "11px" }}
+                  >
                     Inquire
-                  </a>
+                  </WaitlistButton>
                 </div>
               </RevealItem>
             ))}
