@@ -50,24 +50,6 @@ export default function Home() {
       >
         <FloatingParticles />
 
-        {/* oversized watermark */}
-        <span
-          aria-hidden
-          className="display"
-          style={{
-            position: "absolute",
-            bottom: "-12%",
-            right: "-6%",
-            fontSize: "clamp(250px, 40vw, 600px)",
-            lineHeight: 0.85,
-            color: "rgba(184,146,63,0.025)",
-            pointerEvents: "none",
-            userSelect: "none",
-          }}
-        >
-          OC
-        </span>
-
         <div style={{ maxWidth: "1100px", margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
           <Reveal>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px" }}>
@@ -387,7 +369,7 @@ export default function Home() {
         style={{
           padding: "clamp(110px, 16vw, 180px) 28px",
           backgroundImage:
-            "linear-gradient(175deg, rgba(18,10,11,0.85) 0%, rgba(31,15,19,0.78) 40%, rgba(61,14,20,0.65) 100%), url(/brand/dark-texture.png)",
+            "linear-gradient(175deg, rgba(97,24,35,0.7) 0%, rgba(122,31,43,0.6) 50%, rgba(61,14,20,0.75) 100%), url(/brand/hero-texture.png)",
           backgroundSize: "cover, cover",
           backgroundPosition: "center, center",
           position: "relative",
