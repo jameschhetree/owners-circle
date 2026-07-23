@@ -31,7 +31,7 @@ export default function Home() {
     <>
       <Nav tone="burgundy" />
 
-      {/* ─── HERO ─── left-aligned, editorial, massive type */}
+      {/* ═══ 1. HERO — RED ═══ */}
       <section
         className="oc-grain"
         style={{
@@ -134,39 +134,20 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-
-        {/* bottom drip line */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: "15%",
-            width: "1px",
-            height: "80px",
-            background: "linear-gradient(to bottom, rgba(184,146,63,0.4), transparent)",
-          }}
-          aria-hidden
-        />
       </section>
 
-      {/* ─── TWO ARMS ─── glass cards on dark texture */}
+      {/* ═══ 2. TWO ARMS — WHITE ═══ */}
       <section
-        className="oc-grain"
         style={{
           padding: "clamp(90px, 13vw, 140px) 28px",
-          backgroundImage:
-            "linear-gradient(175deg, rgba(61,14,20,0.85) 0%, rgba(97,24,35,0.75) 50%, rgba(122,31,43,0.65) 100%), url(/brand/hero-texture.png)",
-          backgroundSize: "cover, cover",
-          backgroundPosition: "center, center",
+          background: "var(--ivory)",
           position: "relative",
-          overflow: "hidden",
         }}
       >
-        <FloatingParticles color="rgba(184,146,63,0.4)" />
-        <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 2 }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <Reveal>
             <div style={{ marginBottom: "60px" }}>
-              <span className="tag gold-text-static" style={{ display: "block", marginBottom: "16px" }}>
+              <span className="tag" style={{ color: "var(--gold)", display: "block", marginBottom: "16px" }}>
                 Two formats. One circle.
               </span>
               <h2
@@ -174,7 +155,7 @@ export default function Home() {
                 style={{
                   fontSize: "clamp(32px, 5.5vw, 60px)",
                   lineHeight: 0.95,
-                  color: "var(--parchment)",
+                  color: "var(--burgundy)",
                   maxWidth: "600px",
                 }}
               >
@@ -188,13 +169,13 @@ export default function Home() {
             <RevealGroup className="oc-arms-grid" stagger={0.12}>
               {contentArms.map((arm) => (
                 <RevealItem key={arm.label}>
-                  <div className="oc-arm-card glass-card">
+                  <div className="oc-arm-card">
                     <h3
                       className="display"
                       style={{
                         fontSize: "clamp(28px, 3.5vw, 44px)",
                         lineHeight: 1.0,
-                        color: "var(--parchment)",
+                        color: "var(--burgundy)",
                         marginBottom: "18px",
                       }}
                     >
@@ -204,8 +185,8 @@ export default function Home() {
                       style={{
                         fontSize: "15px",
                         lineHeight: 1.7,
-                        color: "var(--parchment)",
-                        opacity: 0.5,
+                        color: "var(--espresso)",
+                        opacity: 0.6,
                         marginBottom: "32px",
                       }}
                     >
@@ -213,7 +194,7 @@ export default function Home() {
                     </p>
                     <Link
                       href={arm.href}
-                      className="pill-outline on-field oc-arrow-cta"
+                      className="pill-outline on-paper oc-arrow-cta"
                       style={{ fontSize: "11px", padding: "12px 24px" }}
                     >
                       {arm.cta} <span className="oc-arrow">→</span>
@@ -226,35 +207,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── NOT FOR EVERYONE ─── editorial statement */}
+      {/* ═══ 3. NOT FOR EVERYONE — RED ═══ */}
       <section
+        className="oc-grain"
         style={{
           padding: "clamp(100px, 16vw, 200px) 28px",
-          background: "var(--ivory)",
+          backgroundImage:
+            "linear-gradient(170deg, rgba(122,31,43,0.6) 0%, rgba(97,24,35,0.65) 100%), url(/brand/hero-texture.png)",
+          backgroundSize: "cover, cover",
+          backgroundPosition: "center, center",
           position: "relative",
           overflow: "hidden",
         }}
       >
+        <FloatingParticles color="rgba(184,146,63,0.35)" />
         <Reveal>
-          <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center", position: "relative", zIndex: 2 }}>
             <h2
               className="display"
               style={{
                 fontSize: "clamp(40px, 7vw, 90px)",
                 lineHeight: 0.95,
-                color: "var(--burgundy)",
+                color: "var(--parchment)",
               }}
             >
               This isn&apos;t for{" "}
-              <em className="serif-it" style={{ fontWeight: 500 }}>everyone.</em>
+              <em className="serif-it gold-text" style={{ fontWeight: 500 }}>everyone.</em>
             </h2>
             <p
               style={{
                 margin: "36px auto 0",
                 fontSize: "clamp(16px, 1.4vw, 19px)",
                 lineHeight: 1.75,
-                color: "var(--espresso)",
-                opacity: 0.55,
+                color: "var(--parchment)",
+                opacity: 0.5,
                 maxWidth: "520px",
               }}
             >
@@ -266,18 +252,15 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ─── FEATURED EPISODES ─── */}
+      {/* ═══ 4. FEATURED EPISODES — WHITE ═══ */}
       <section
-        className="on-field-sec oc-grain"
         style={{
           padding: "clamp(90px, 13vw, 140px) 28px",
-          backgroundImage:
-            "linear-gradient(170deg, rgba(122,31,43,0.65) 0%, rgba(97,24,35,0.7) 100%), url(/brand/hero-texture.png)",
-          backgroundSize: "cover, cover",
-          backgroundPosition: "center, center",
+          background: "var(--ivory)",
+          position: "relative",
         }}
       >
-        <div style={{ maxWidth: "960px", margin: "0 auto", position: "relative", zIndex: 2 }}>
+        <div style={{ maxWidth: "960px", margin: "0 auto" }}>
           <Reveal>
             <div
               style={{
@@ -290,7 +273,7 @@ export default function Home() {
               }}
             >
               <div>
-                <span className="tag gold-text-static">
+                <span className="tag" style={{ color: "var(--gold)" }}>
                   Coming Soon
                 </span>
                 <h2
@@ -299,13 +282,13 @@ export default function Home() {
                     fontSize: "clamp(36px, 5.5vw, 56px)",
                     lineHeight: 0.95,
                     marginTop: "14px",
-                    color: "var(--parchment)",
+                    color: "var(--burgundy)",
                   }}
                 >
                   The conversations
                 </h2>
               </div>
-              <Link href="/episodes" className="link-ul">
+              <Link href="/episodes" className="link-ul-ink">
                 All episodes →
               </Link>
             </div>
@@ -315,9 +298,9 @@ export default function Home() {
             {featuredEps.map((ep, i) => (
               <RevealItem key={ep.id}>
                 <div
-                  className="oc-ep-row"
+                  className="oc-ep-row-light"
                   style={{
-                    borderTop: "1px solid rgba(245,239,229,0.12)",
+                    borderTop: "1px solid var(--taupe)",
                     padding: "28px 0",
                     display: "flex",
                     gap: "20px",
@@ -325,7 +308,7 @@ export default function Home() {
                     flexWrap: "wrap",
                     borderBottom:
                       i === featuredEps.length - 1
-                        ? "1px solid rgba(245,239,229,0.12)"
+                        ? "1px solid var(--taupe)"
                         : "none",
                   }}
                 >
@@ -338,7 +321,8 @@ export default function Home() {
                   <span
                     className="tag"
                     style={{
-                      color: "rgba(245,239,229,0.4)",
+                      color: "var(--espresso)",
+                      opacity: 0.4,
                       minWidth: "100px",
                     }}
                   >
@@ -348,7 +332,7 @@ export default function Home() {
                     className="serif"
                     style={{
                       fontSize: "clamp(20px, 2.5vw, 28px)",
-                      color: "var(--parchment)",
+                      color: "var(--burgundy)",
                       flex: 1,
                       lineHeight: 1.2,
                       fontWeight: 600,
@@ -363,13 +347,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── NEWSLETTER CTA ─── deep dark */}
+      {/* ═══ 5. NEWSLETTER CTA — RED ═══ */}
       <section
         className="oc-grain"
         style={{
           padding: "clamp(110px, 16vw, 180px) 28px",
           backgroundImage:
-            "linear-gradient(175deg, rgba(97,24,35,0.7) 0%, rgba(122,31,43,0.6) 50%, rgba(61,14,20,0.75) 100%), url(/brand/hero-texture.png)",
+            "linear-gradient(175deg, rgba(97,24,35,0.65) 0%, rgba(122,31,43,0.55) 50%, rgba(61,14,20,0.7) 100%), url(/brand/hero-texture.png)",
           backgroundSize: "cover, cover",
           backgroundPosition: "center, center",
           position: "relative",
@@ -428,11 +412,11 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ─── FOR BUILDERS / FOR PARTNERS ─── */}
+      {/* ═══ 6. BUILDERS / PARTNERS — WHITE ═══ */}
       <section style={{ borderTop: "none" }}>
         <div className="oc-apply-grid">
-          <Reveal className="oc-apply-c oc-apply-dark oc-grain">
-            <span className="tag gold-text-static" style={{ display: "block", marginBottom: "18px" }}>
+          <Reveal className="oc-apply-c oc-apply-ivory">
+            <span className="tag" style={{ color: "var(--gold)", display: "block", marginBottom: "18px" }}>
               For builders
             </span>
             <h3
@@ -440,21 +424,21 @@ export default function Home() {
               style={{
                 fontSize: "clamp(28px, 4vw, 44px)",
                 lineHeight: 0.95,
-                color: "var(--parchment)",
+                color: "var(--burgundy)",
               }}
             >
               Know someone
               <br />
               who{" "}
-              <em className="serif-it gold-text" style={{ fontWeight: 500 }}>belongs?</em>
+              <em className="serif-it" style={{ fontWeight: 500, color: "var(--gold)" }}>belongs?</em>
             </h3>
             <p
               style={{
                 marginTop: "20px",
                 fontSize: "15px",
                 lineHeight: 1.7,
-                color: "var(--parchment)",
-                opacity: 0.5,
+                color: "var(--espresso)",
+                opacity: 0.55,
                 maxWidth: "340px",
               }}
             >
@@ -464,14 +448,14 @@ export default function Home() {
             <WaitlistButton
               intent="Nominate a guest"
               source="Home · Nominate"
-              className="pill-outline on-field oc-arrow-cta"
+              className="pill-outline on-paper oc-arrow-cta"
               style={{ marginTop: "36px", display: "inline-flex" }}
             >
               Nominate <span className="oc-arrow">→</span>
             </WaitlistButton>
           </Reveal>
 
-          <Reveal className="oc-apply-c oc-apply-light" delay={0.06}>
+          <Reveal className="oc-apply-c oc-apply-parchment" delay={0.06}>
             <span className="tag" style={{ color: "var(--burgundy)", display: "block", marginBottom: "18px" }}>
               For partners
             </span>
@@ -525,34 +509,33 @@ export default function Home() {
         .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .oc-arm-card {
           padding: 44px 40px;
+          background: var(--parchment);
+          border-radius: 20px;
+          border: 1px solid var(--taupe);
           transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease, border-color 0.5s ease;
         }
         .oc-arm-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 24px 60px -12px rgba(0,0,0,0.3);
-          border-color: rgba(184,146,63,0.25);
+          box-shadow: 0 24px 60px -12px rgba(122,31,43,0.1);
+          border-color: var(--gold);
         }
 
-        .oc-ep-row {
+        .oc-ep-row-light {
           transition: background 0.3s ease, padding-left 0.3s ease;
           border-radius: 4px;
           margin: 0 -12px;
           padding-left: 12px !important;
           padding-right: 12px !important;
         }
-        .oc-ep-row:hover {
-          background: rgba(245, 239, 229, 0.05);
+        .oc-ep-row-light:hover {
+          background: rgba(122, 31, 43, 0.04);
           padding-left: 20px !important;
         }
 
         .oc-apply-grid { display: grid; grid-template-columns: 1fr 1fr; }
-        .oc-apply-c { padding: clamp(80px, 12vw, 140px) clamp(40px, 5vw, 80px); position: relative; overflow: hidden; }
-        .oc-apply-dark {
-          background-image: linear-gradient(165deg, rgba(61,14,20,0.8) 0%, rgba(97,24,35,0.7) 100%), url(/brand/hero-texture.png);
-          background-size: cover, cover;
-          background-position: center, center;
-        }
-        .oc-apply-light { background: var(--parchment); }
+        .oc-apply-c { padding: clamp(80px, 12vw, 140px) clamp(40px, 5vw, 80px); }
+        .oc-apply-ivory { background: var(--ivory); }
+        .oc-apply-parchment { background: var(--parchment); }
 
         @media (max-width: 760px) {
           .oc-arms-grid { grid-template-columns: 1fr; }
