@@ -2,168 +2,119 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { WaitlistButton } from "@/components/Waitlist";
 
-const cols = [
-  {
-    title: "Explore",
-    items: [
-      { label: "Episodes", href: "/episodes" },
-      { label: "Owner's Notes", href: "/newsletter" },
-      { label: "Events", href: "/events" },
-      { label: "About", href: "/about" },
-    ],
-  },
-  {
-    title: "Get Involved",
-    items: [
-      { label: "Subscribe", href: "/newsletter" },
-      { label: "Nominate a Guest", href: "/nominate" },
-      { label: "Sponsor / Partner", href: "/sponsors" },
-    ],
-  },
-  {
-    title: "Follow",
-    items: [
-      { label: "LinkedIn", href: "https://www.linkedin.com" },
-      { label: "Instagram", href: "https://www.instagram.com" },
-      { label: "YouTube", href: "https://www.youtube.com" },
-    ],
-  },
+const nav = [
+  { label: "Episodes", href: "/episodes" },
+  { label: "Notes", href: "/newsletter" },
+  { label: "About", href: "/about" },
+  { label: "Nominate", href: "/nominate" },
+  { label: "Sponsors", href: "/sponsors" },
+];
+
+const social = [
+  { label: "LinkedIn", href: "https://www.linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com" },
+  { label: "YouTube", href: "https://www.youtube.com" },
 ];
 
 export function SiteFooter() {
   return (
-    <footer
-      style={{
-        background: "var(--espresso)",
-        color: "var(--parchment)",
-        padding: "100px 28px 48px",
-        position: "relative",
-        borderTop: "none",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "960px",
-          margin: "0 auto",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "14px",
-            marginBottom: "40px",
-          }}
-        >
-          <Image
-            src="/brand/oc-logo.jpg"
-            alt="Owner's Circle"
-            width={48}
-            height={48}
-            style={{ borderRadius: "50%" }}
-          />
-          <span className="wordmark" style={{ color: "var(--parchment)" }}>
-            Owner&apos;s Circle
-          </span>
+    <footer className="oc-footer">
+      <div className="oc-footer-inner">
+        <div className="oc-footer-top">
+          <Link href="/" className="oc-footer-brand">
+            <Image
+              src="/brand/oc-logo.jpg"
+              alt="Owner's Circle"
+              width={36}
+              height={36}
+              style={{ borderRadius: "50%", border: "1px solid rgba(201,162,94,0.3)" }}
+            />
+            <span className="wordmark" style={{ color: "var(--parchment)", fontSize: "17px" }}>
+              Owner&apos;s Circle
+            </span>
+          </Link>
+
+          <nav className="oc-footer-nav">
+            {nav.map((l) => (
+              <Link key={l.label} href={l.href} className="oc-foot-link">
+                {l.label}
+              </Link>
+            ))}
+            <span className="oc-footer-sep" aria-hidden />
+            {social.map((l) => (
+              <Link key={l.label} href={l.href} className="oc-foot-link" target="_blank" rel="noopener">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
-        <h2
-          className="serif"
-          style={{
-            fontSize: "clamp(32px, 5vw, 52px)",
-            lineHeight: 1.08,
-            color: "var(--parchment)",
-            maxWidth: "500px",
-            marginBottom: "32px",
-          }}
-        >
-          Don&apos;t just watch the circle.{" "}
-          <em className="serif-it" style={{ color: "var(--gold-champagne)" }}>
-            Join it.
-          </em>
-        </h2>
-
-        <WaitlistButton
-          intent="Newsletter"
-          source="Footer"
-          className="pill"
-          style={{ display: "inline-flex" }}
-        >
-          Subscribe Free
-        </WaitlistButton>
-
-        <div
-          className="oc-foot-cols"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "40px",
-            borderTop: "1px solid rgba(245, 239, 229, 0.15)",
-            marginTop: "72px",
-            paddingTop: "48px",
-          }}
-        >
-          {cols.map((c) => (
-            <div key={c.title}>
-              <div
-                style={{
-                  fontSize: "10.5px",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                  marginBottom: "18px",
-                  fontWeight: 600,
-                }}
-              >
-                {c.title}
-              </div>
-              {c.items.map((it) => (
-                <Link
-                  key={it.label}
-                  href={it.href}
-                  className="oc-foot-link"
-                  style={{
-                    display: "block",
-                    fontSize: "14px",
-                    color: "var(--parchment)",
-                    opacity: 0.5,
-                    marginBottom: "12px",
-                    transition: "opacity 0.3s ease",
-                  }}
-                >
-                  {it.label}
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        <div
-          className="oc-foot-base"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            fontSize: "12px",
-            color: "var(--parchment)",
-            opacity: 0.35,
-            marginTop: "56px",
-            gap: "16px",
-          }}
-        >
+        <div className="oc-footer-base">
           <span>&copy; 2026 Owner&apos;s Circle</span>
-          <span>The District &middot; Maryland &middot; Virginia</span>
         </div>
       </div>
 
       <style>{`
-        .oc-foot-link:hover { opacity: 1 !important; color: var(--gold-champagne) !important; }
+        .oc-footer {
+          background: linear-gradient(180deg, var(--burgundy-deep) 0%, #3D0E14 100%);
+          color: var(--parchment);
+          padding: 48px 28px 32px;
+          border-top: 1px solid rgba(201,162,94,0.12);
+        }
+        .oc-footer-inner {
+          max-width: 960px;
+          margin: 0 auto;
+        }
+        .oc-footer-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+        }
+        .oc-footer-brand {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--parchment);
+          text-decoration: none;
+        }
+        .oc-footer-nav {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+        }
+        .oc-footer-nav .oc-foot-link {
+          font-size: 13px;
+          color: var(--parchment);
+          opacity: 0.45;
+          transition: opacity 0.3s ease, color 0.3s ease;
+          text-decoration: none;
+        }
+        .oc-footer-nav .oc-foot-link:hover {
+          opacity: 1;
+          color: var(--gold-champagne);
+        }
+        .oc-footer-sep {
+          width: 1px;
+          height: 14px;
+          background: rgba(245,239,229,0.15);
+        }
+        .oc-footer-base {
+          margin-top: 32px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(245,239,229,0.08);
+          font-size: 11px;
+          color: var(--parchment);
+          opacity: 0.25;
+          letter-spacing: 0.04em;
+        }
         @media (max-width: 760px) {
-          .oc-foot-cols { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
-          .oc-foot-base { flex-direction: column !important; }
+          .oc-footer-top { flex-direction: column; align-items: flex-start; }
+          .oc-footer-nav { gap: 16px; }
+          .oc-footer-sep { display: none; }
         }
       `}</style>
     </footer>

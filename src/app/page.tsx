@@ -30,11 +30,11 @@ export default function Home() {
 
   return (
     <>
-      <Nav tone="ivory" />
+      <Nav tone="burgundy" />
 
-      {/* HERO */}
+      {/* HERO — burgundy */}
       <section
-        className="hero-gradient-bg"
+        className="oc-grain"
         style={{
           minHeight: "100vh",
           display: "flex",
@@ -43,9 +43,58 @@ export default function Home() {
           alignItems: "center",
           textAlign: "center",
           padding: "140px 28px 100px",
+          background: "linear-gradient(165deg, var(--burgundy) 0%, var(--burgundy-deep) 60%, #3D0E14 100%)",
           position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* atmospheric gold glow */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            top: "-20%",
+            right: "-10%",
+            width: "50vw",
+            height: "50vw",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(201,162,94,0.08) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+        {/* oversized typographic watermark */}
+        <span
+          aria-hidden
+          className="serif"
+          style={{
+            position: "absolute",
+            bottom: "-8%",
+            right: "-4%",
+            fontSize: "clamp(200px, 35vw, 500px)",
+            lineHeight: 1,
+            color: "rgba(201,162,94,0.03)",
+            fontWeight: 700,
+            letterSpacing: "-0.04em",
+            pointerEvents: "none",
+            userSelect: "none",
+          }}
+        >
+          OC
+        </span>
+        {/* diagonal gold accent line */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            top: "12%",
+            left: "-2%",
+            width: "180px",
+            height: "1px",
+            background: "linear-gradient(90deg, transparent, rgba(201,162,94,0.25), transparent)",
+            transform: "rotate(-35deg)",
+            pointerEvents: "none",
+          }}
+        />
         <Reveal>
           <Image
             src="/brand/oc-logo.jpg"
@@ -54,11 +103,11 @@ export default function Home() {
             height={160}
             style={{
               borderRadius: "50%",
-              margin: "0 auto 40px",
-              border: "3px solid var(--taupe)",
-              width: "clamp(120px, 18vw, 180px)",
-              height: "clamp(120px, 18vw, 180px)",
-              boxShadow: "0 12px 40px -8px rgba(122, 31, 43, 0.18)",
+              margin: "0 auto 44px",
+              border: "2px solid var(--gold)",
+              width: "clamp(100px, 16vw, 160px)",
+              height: "clamp(100px, 16vw, 160px)",
+              boxShadow: "0 16px 48px -8px rgba(0,0,0,0.35)",
             }}
           />
         </Reveal>
@@ -66,16 +115,16 @@ export default function Home() {
           <h1
             className="serif"
             style={{
-              fontSize: "clamp(42px, 7vw, 80px)",
+              fontSize: "clamp(40px, 7vw, 78px)",
               lineHeight: 1.05,
               letterSpacing: "-0.02em",
-              color: "var(--burgundy)",
+              color: "var(--parchment)",
               maxWidth: "800px",
               margin: "0 auto",
             }}
           >
             Where the builders{" "}
-            <em className="serif-it" style={{ color: "var(--burgundy-deep)" }}>
+            <em className="serif-it" style={{ color: "var(--gold)" }}>
               gather.
             </em>
           </h1>
@@ -83,13 +132,12 @@ export default function Home() {
         <Reveal delay={0.16}>
           <p
             style={{
-              marginTop: "28px",
-              fontSize: "clamp(16px, 1.5vw, 19px)",
-              lineHeight: 1.7,
-              color: "var(--espresso)",
-              maxWidth: "540px",
+              fontSize: "clamp(15px, 1.4vw, 18px)",
+              lineHeight: 1.75,
+              color: "var(--parchment)",
+              maxWidth: "500px",
               margin: "28px auto 0",
-              opacity: 0.8,
+              opacity: 0.65,
             }}
           >
             A podcast, newsletter, and private network for the owners,
@@ -103,23 +151,23 @@ export default function Home() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "18px",
+              gap: "16px",
             }}
           >
             <WaitlistButton
               intent="Newsletter"
               source="Home hero"
-              className="pill"
+              className="pill pill-gold"
               style={{ fontSize: "13px", padding: "16px 36px" }}
             >
               Subscribe to the Newsletter
             </WaitlistButton>
             <span
               style={{
-                fontSize: "12px",
-                color: "var(--espresso)",
-                opacity: 0.5,
-                letterSpacing: "0.04em",
+                fontSize: "11.5px",
+                color: "var(--parchment)",
+                opacity: 0.35,
+                letterSpacing: "0.06em",
               }}
             >
               Free. Weekly. For builders only.
@@ -134,7 +182,7 @@ export default function Home() {
             transform: "translateX(-50%)",
             width: "1px",
             height: "60px",
-            background: "linear-gradient(to bottom, var(--gold), transparent)",
+            background: "linear-gradient(to bottom, var(--gold-champagne), transparent)",
           }}
           aria-hidden
         />
@@ -348,16 +396,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER CTA — ivory bg */}
+      {/* NEWSLETTER CTA — deep dark */}
       <section
-        className="on-paper-sec"
+        className="oc-grain"
         style={{
-          padding: "clamp(110px, 16vw, 180px) 28px",
+          padding: "clamp(100px, 14vw, 160px) 28px",
           textAlign: "center",
+          background: "linear-gradient(175deg, #120A0B 0%, #1F0F13 40%, var(--burgundy-deep) 100%)",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* gold radial glow */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "80vw",
+            height: "80vw",
+            maxWidth: "700px",
+            maxHeight: "700px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(201,162,94,0.06) 0%, transparent 60%)",
+            pointerEvents: "none",
+          }}
+        />
         <Reveal>
-          <div style={{ maxWidth: "620px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "620px", margin: "0 auto", position: "relative", zIndex: 2 }}>
             <div
               className="gold-divider"
               style={{ margin: "0 auto 36px" }}
@@ -370,18 +438,18 @@ export default function Home() {
                 marginBottom: "20px",
               }}
             >
-              Owner&apos;s Notes -- Weekly
+              Owner&apos;s Notes — Weekly
             </span>
             <h2
               className="serif"
               style={{
                 fontSize: "clamp(32px, 5vw, 56px)",
                 lineHeight: 1.08,
-                color: "var(--burgundy)",
+                color: "var(--parchment)",
               }}
             >
               Stay inside{" "}
-              <em className="serif-it" style={{ color: "var(--burgundy-deep)" }}>
+              <em className="serif-it" style={{ color: "var(--gold-champagne)" }}>
                 the circle.
               </em>
             </h2>
@@ -390,8 +458,8 @@ export default function Home() {
                 margin: "24px auto 0",
                 fontSize: "16px",
                 lineHeight: 1.7,
-                color: "var(--espresso)",
-                opacity: 0.7,
+                color: "var(--parchment)",
+                opacity: 0.55,
                 maxWidth: "480px",
               }}
             >
@@ -402,7 +470,7 @@ export default function Home() {
               <WaitlistButton
                 intent="Newsletter"
                 source="Home · Newsletter CTA"
-                className="pill"
+                className="pill pill-gold"
                 style={{ fontSize: "13px", padding: "16px 36px" }}
               >
                 Subscribe Free
@@ -412,13 +480,10 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* gold rule */}
-      <hr className="gold-hr" style={{ margin: "0 auto" }} />
-
-      {/* FOR BUILDERS / FOR PARTNERS — parchment bg */}
-      <section style={{ background: "var(--parchment)", borderTop: "none" }}>
+      {/* FOR BUILDERS / FOR PARTNERS — editorial split */}
+      <section style={{ borderTop: "none" }}>
         <div className="oc-apply-grid">
-          <Reveal className="oc-apply-c">
+          <Reveal className="oc-apply-c oc-apply-dark">
             <span
               className="tag"
               style={{ color: "var(--gold)", display: "block", marginBottom: "18px" }}
@@ -430,19 +495,19 @@ export default function Home() {
               style={{
                 fontSize: "clamp(28px, 4vw, 42px)",
                 lineHeight: 1.1,
-                color: "var(--burgundy)",
+                color: "var(--parchment)",
               }}
             >
               Know someone who{" "}
-              <em className="serif-it">belongs?</em>
+              <em className="serif-it" style={{ color: "var(--gold-champagne)" }}>belongs?</em>
             </h3>
             <p
               style={{
                 marginTop: "18px",
                 fontSize: "15px",
                 lineHeight: 1.7,
-                color: "var(--espresso)",
-                opacity: 0.7,
+                color: "var(--parchment)",
+                opacity: 0.6,
                 maxWidth: "380px",
               }}
             >
@@ -452,17 +517,17 @@ export default function Home() {
             <WaitlistButton
               intent="Nominate a guest"
               source="Home · Nominate"
-              className="pill-outline on-paper"
+              className="pill-outline on-field"
               style={{ marginTop: "32px", display: "inline-flex" }}
             >
               Nominate a Guest
             </WaitlistButton>
           </Reveal>
 
-          <Reveal className="oc-apply-c oc-apply-c2" delay={0.06}>
+          <Reveal className="oc-apply-c oc-apply-light" delay={0.06}>
             <span
               className="tag"
-              style={{ color: "var(--gold)", display: "block", marginBottom: "18px" }}
+              style={{ color: "var(--burgundy)", display: "block", marginBottom: "18px" }}
             >
               For partners
             </span>
@@ -503,15 +568,23 @@ export default function Home() {
       </section>
 
       <style>{`
-        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--taupe); border: 1px solid var(--taupe); }
+        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
         .oc-arm-card {
           background: var(--ivory);
-          padding: clamp(32px, 4vw, 52px);
-          transition: background 0.5s ease, box-shadow 0.5s ease;
+          padding: clamp(36px, 5vw, 60px);
+          border-left: 3px solid var(--burgundy);
+          transition: background 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.5s ease, box-shadow 0.5s ease;
         }
         .oc-arm-card:hover {
           background: #fff;
-          box-shadow: 0 12px 36px -12px rgba(122, 31, 43, 0.1);
+          border-left-color: var(--gold);
+          box-shadow: 0 16px 48px -16px rgba(122, 31, 43, 0.12);
+        }
+        .oc-arm-card + .oc-arm-card {
+          border-top: none;
+        }
+        @media (min-width: 761px) {
+          .oc-arm-card:first-child { border-right: 1px solid var(--taupe); }
         }
         .oc-ep-row {
           transition: background 0.3s ease;
@@ -523,14 +596,13 @@ export default function Home() {
         .oc-ep-row:hover {
           background: rgba(245, 239, 229, 0.06);
         }
-        .oc-apply-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; }
+        .oc-apply-grid { display: grid; grid-template-columns: 1fr 1fr; }
         .oc-apply-c { padding: clamp(70px, 10vw, 120px) clamp(28px, 4vw, 56px); }
-        .oc-apply-c { border-right: 1px solid var(--taupe); }
-        .oc-apply-c2 { border-right: none; }
+        .oc-apply-dark { background: var(--burgundy); }
+        .oc-apply-light { background: var(--parchment); }
         @media (max-width: 760px) {
           .oc-arms-grid { grid-template-columns: 1fr; }
           .oc-apply-grid { grid-template-columns: 1fr; }
-          .oc-apply-c { border-right: none; border-bottom: 1px solid var(--taupe); }
         }
       `}</style>
     </>

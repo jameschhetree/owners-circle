@@ -125,8 +125,8 @@ export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
             position: "fixed",
             inset: 0,
             top: "60px",
-            background: "var(--ivory)",
-            color: "var(--espresso)",
+            background: onBurgundy ? "var(--burgundy-deep)" : "var(--ivory)",
+            color: onBurgundy ? "var(--parchment)" : "var(--espresso)",
             zIndex: 199,
             padding: "48px 32px",
             display: "flex",
@@ -142,8 +142,8 @@ export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
               className="serif"
               style={{
                 fontSize: "36px",
-                color: "var(--burgundy)",
-                borderBottom: "1px solid var(--taupe)",
+                color: onBurgundy ? "var(--parchment)" : "var(--burgundy)",
+                borderBottom: `1px solid ${onBurgundy ? "rgba(245,239,229,0.15)" : "var(--taupe)"}`,
                 paddingBottom: "20px",
               }}
             >
@@ -153,7 +153,7 @@ export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
           <WaitlistButton
             intent="Newsletter"
             source="Nav (mobile)"
-            className="pill"
+            className={onBurgundy ? "pill pill-gold" : "pill"}
             style={{ marginTop: "12px", alignSelf: "flex-start" }}
             onClick={() => setOpen(false)}
           >
