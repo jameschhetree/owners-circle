@@ -2,10 +2,6 @@
 
 import { WaitlistButton } from "@/components/Waitlist";
 
-/**
- * Consolidated into THE single shared site-wide form. Opens the shared
- * waitlist modal with the "Events" intent preset.
- */
 export function EventWaitlistForm() {
   return (
     <div className="oc-form">
@@ -13,7 +9,7 @@ export function EventWaitlistForm() {
         style={{
           fontSize: "15px",
           lineHeight: 1.7,
-          color: "rgba(243,236,225,0.72)",
+          color: "rgba(245,239,229,0.72)",
           maxWidth: "440px",
         }}
       >
@@ -24,7 +20,7 @@ export function EventWaitlistForm() {
         intent="Events"
         source="Events page"
         className="pill"
-        style={{ alignSelf: "flex-start", marginTop: "4px" }}
+        style={{ alignSelf: "flex-start", marginTop: "4px", background: "var(--gold)", color: "var(--burgundy-deep)" }}
       >
         Join the Event Waitlist
       </WaitlistButton>

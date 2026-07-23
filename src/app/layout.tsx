@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Fraunces } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WaitlistProvider } from "@/components/Waitlist";
 
-const inter = Inter_Tight({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
   weight: ["400", "500", "600"],
 });
 
-const fraunces = Fraunces({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-cormorant",
   display: "swap",
-  weight: "variable",
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#5a1410",
+  themeColor: "#7A1F2B",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body>
         <SmoothScroll />
         <WaitlistProvider>

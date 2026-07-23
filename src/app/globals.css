@@ -1,34 +1,29 @@
 @import "tailwindcss";
 
-/* ============================================================
-   OWNER'S CIRCLE — Direction 2 "The Field"
-   Saturated oxblood field · enormous Fraunces serif · ember accent
-   Ported from canonical mock /tmp/oc-v2-dir2.html
-   ============================================================ */
-
 :root {
-  --field: #5a1410;        /* deep oxblood */
-  --field-hi: #7c1d16;
-  --field-lo: #3c0d0a;
-  --ember: #e0703c;        /* warm ember accent */
-  --bone: #f3ece1;
-  --paper: #f6f1e8;
-  --ink: #1c1410;
-  --mute: #8a7765;
-  --rule: rgba(28, 20, 16, 0.16);
-  --rule-bone: rgba(243, 236, 225, 0.22);
+  --burgundy: #7A1F2B;
+  --burgundy-deep: #611823;
+  --gold: #C9A25E;
+  --gold-champagne: #E3C88C;
+  --parchment: #F5EFE5;
+  --ivory: #FBF8F2;
+  --taupe: #D8CCBC;
+  --espresso: #4C3A33;
+  --rule: rgba(76, 58, 51, 0.12);
+  --rule-light: rgba(122, 31, 43, 0.10);
 }
 
 @theme inline {
-  --color-field: #5a1410;
-  --color-field-hi: #7c1d16;
-  --color-field-lo: #3c0d0a;
-  --color-ember: #e0703c;
-  --color-bone: #f3ece1;
-  --color-paper: #f6f1e8;
-  --color-ink: #1c1410;
+  --color-burgundy: #7A1F2B;
+  --color-burgundy-deep: #611823;
+  --color-gold: #C9A25E;
+  --color-gold-champagne: #E3C88C;
+  --color-parchment: #F5EFE5;
+  --color-ivory: #FBF8F2;
+  --color-taupe: #D8CCBC;
+  --color-espresso: #4C3A33;
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-fraunces);
+  --font-serif: var(--font-cormorant);
 }
 
 @layer base {
@@ -40,7 +35,6 @@
 }
 
 html {
-  /* Lenis drives scroll; native smooth disabled to avoid conflict */
   scroll-behavior: auto;
 }
 
@@ -50,71 +44,54 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans), "Inter Tight", system-ui, sans-serif;
+  background: var(--ivory);
+  color: var(--espresso);
+  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Film grain — fixed, multiply, matches mock .grain */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.42;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.2'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
 ::selection {
-  background: rgba(224, 112, 60, 0.3);
-  color: var(--ink);
+  background: rgba(201, 162, 94, 0.3);
+  color: var(--burgundy-deep);
 }
 
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; }
 img { display: block; max-width: 100%; }
 
-/* ---- TYPOGRAPHY PRIMITIVES ---- */
-
 .serif {
-  font-family: var(--font-serif), "Fraunces", Georgia, serif;
-  font-weight: 300;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
 }
 .serif-it { font-style: italic; }
 
 .wordmark {
-  font-family: var(--font-serif), "Fraunces", serif;
-  font-weight: 400;
-  letter-spacing: 0.46em;
-  font-size: 12px;
-  text-transform: uppercase;
+  font-family: var(--font-serif), "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: 18px;
 }
 
 .tag {
-  letter-spacing: 0.3em;
-  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  font-size: 11px;
   text-transform: uppercase;
   font-weight: 500;
 }
-
-/* ---- PILL / CTA BUTTONS ---- */
 
 .pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 13px 26px;
+  padding: 14px 28px;
   border-radius: 999px;
-  background: var(--bone);
-  color: var(--field);
+  background: var(--burgundy);
+  color: var(--ivory);
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -123,25 +100,26 @@ img { display: block; max-width: 100%; }
     background 0.4s ease, color 0.4s ease;
 }
 .pill:hover {
+  background: var(--burgundy-deep);
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px -16px rgba(40, 8, 6, 0.55);
+  box-shadow: 0 18px 40px -16px rgba(122, 31, 43, 0.35);
 }
 .pill:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
 
-.pill-ember {
-  background: var(--ember);
-  color: var(--field-lo);
+.pill-gold {
+  background: var(--gold);
+  color: var(--burgundy-deep);
 }
-.pill-ember:hover { background: #ef8350; }
+.pill-gold:hover { background: var(--gold-champagne); }
 
 .pill-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 13px 26px;
+  padding: 14px 28px;
   border-radius: 999px;
   background: transparent;
   font-weight: 600;
@@ -149,72 +127,53 @@ img { display: block; max-width: 100%; }
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .pill-outline.on-field {
-  border: 1px solid rgba(243, 236, 225, 0.42);
-  color: var(--bone);
+  border: 1px solid rgba(245, 239, 229, 0.35);
+  color: var(--parchment);
 }
 .pill-outline.on-field:hover {
-  background: rgba(243, 236, 225, 0.08);
-  border-color: var(--bone);
+  background: rgba(245, 239, 229, 0.08);
+  border-color: var(--parchment);
   transform: translateY(-2px);
 }
 .pill-outline.on-paper {
   border: 1px solid var(--rule);
-  color: var(--ink);
+  color: var(--espresso);
 }
 .pill-outline.on-paper:hover {
-  border-color: var(--field);
-  background: rgba(90, 20, 16, 0.04);
+  border-color: var(--burgundy);
+  background: rgba(122, 31, 43, 0.04);
   transform: translateY(-2px);
 }
 
 .link-ul {
   font-size: 13px;
-  color: rgba(243, 236, 225, 0.7);
-  border-bottom: 1px solid var(--ember);
+  color: rgba(245, 239, 229, 0.7);
+  border-bottom: 1px solid var(--gold);
   padding-bottom: 4px;
   transition: color 0.3s ease;
 }
-.link-ul:hover { color: var(--bone); }
+.link-ul:hover { color: var(--parchment); }
 
 .link-ul-ink {
   font-size: 13px;
-  color: var(--mute);
-  border-bottom: 1px solid var(--field);
+  color: var(--espresso);
+  border-bottom: 1px solid var(--burgundy);
   padding-bottom: 4px;
   transition: color 0.3s ease;
 }
-.link-ul-ink:hover { color: var(--field); }
-
-/* ---- IMAGE / TILE TEXTURES (no photo assets — rich oxblood fields) ---- */
-
-.tex-deep {
-  background: radial-gradient(closest-side at 38% 38%, rgba(255, 210, 170, 0.5), transparent 64%),
-    linear-gradient(150deg, #7c1d16, #2c0907);
-}
-.tex-ember {
-  background: radial-gradient(closest-side at 42% 40%, rgba(255, 222, 188, 0.55), transparent 62%),
-    linear-gradient(150deg, #e0703c, #7c1d16);
-}
-.tex-flat {
-  background: linear-gradient(150deg, #7c1d16, #3c0d0a);
-}
-.tex-frame { box-shadow: inset 0 0 0 1px rgba(243, 236, 225, 0.2); }
-
-/* ---- FIELD / PAPER SECTION SHELLS ---- */
+.link-ul-ink:hover { color: var(--burgundy); }
 
 .on-field-sec {
-  background: var(--field);
-  color: var(--bone);
+  background: var(--burgundy);
+  color: var(--parchment);
   position: relative;
   overflow: hidden;
 }
 .on-paper-sec {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ivory);
+  color: var(--espresso);
   position: relative;
 }
-
-/* ---- FORM (oxblood) ---- */
 
 .oc-form { display: flex; flex-direction: column; gap: 22px; }
 
@@ -222,47 +181,46 @@ img { display: block; max-width: 100%; }
   display: block;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: 9px;
 }
-.on-field-sec .oc-label { color: rgba(243, 236, 225, 0.55); }
-.on-paper-sec .oc-label { color: var(--mute); }
+.on-field-sec .oc-label { color: rgba(245, 239, 229, 0.55); }
+.on-paper-sec .oc-label { color: var(--espresso); }
 
 .oc-input {
   width: 100%;
   padding: 15px 18px;
-  border-radius: 12px;
-  font-family: var(--font-sans), "Inter Tight", sans-serif;
+  border-radius: 10px;
+  font-family: var(--font-sans), "Inter", sans-serif;
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s ease, background 0.3s ease;
   resize: vertical;
 }
 .on-field-sec .oc-input {
-  border: 1px solid rgba(243, 236, 225, 0.22);
-  background: rgba(243, 236, 225, 0.05);
-  color: var(--bone);
+  border: 1px solid rgba(245, 239, 229, 0.2);
+  background: rgba(245, 239, 229, 0.06);
+  color: var(--parchment);
 }
-.on-field-sec .oc-input::placeholder { color: rgba(243, 236, 225, 0.32); }
-.on-field-sec .oc-input:focus { border-color: var(--ember); background: rgba(243, 236, 225, 0.08); }
+.on-field-sec .oc-input::placeholder { color: rgba(245, 239, 229, 0.32); }
+.on-field-sec .oc-input:focus { border-color: var(--gold); background: rgba(245, 239, 229, 0.08); }
 
 .on-paper-sec .oc-input {
-  border: 1px solid var(--rule);
+  border: 1px solid var(--taupe);
   background: #fff;
-  color: var(--ink);
+  color: var(--espresso);
 }
-.on-paper-sec .oc-input::placeholder { color: rgba(28, 20, 16, 0.3); }
-.on-paper-sec .oc-input:focus { border-color: var(--field); }
+.on-paper-sec .oc-input::placeholder { color: rgba(76, 58, 51, 0.35); }
+.on-paper-sec .oc-input:focus { border-color: var(--burgundy); }
 
 select.oc-input { appearance: none; cursor: pointer; }
 
-/* Inline newsletter pill-form (matches mock) */
 .news-form {
   margin: 0 auto;
   display: flex;
   max-width: 480px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--taupe);
   border-radius: 999px;
   overflow: hidden;
   background: #fff;
@@ -272,37 +230,39 @@ select.oc-input { appearance: none; cursor: pointer; }
   border: none;
   outline: none;
   padding: 18px 26px;
-  font-family: var(--font-sans), "Inter Tight", sans-serif;
+  font-family: var(--font-sans), "Inter", sans-serif;
   font-size: 15px;
   background: none;
-  color: var(--ink);
+  color: var(--espresso);
   min-width: 0;
 }
-.news-form input::placeholder { color: rgba(28, 20, 16, 0.34); }
+.news-form input::placeholder { color: rgba(76, 58, 51, 0.4); }
 .news-form button {
-  background: var(--field);
-  color: var(--bone);
+  background: var(--burgundy);
+  color: var(--ivory);
   border: none;
   padding: 0 32px;
   font-size: 12px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.3s ease;
 }
-.news-form button:hover { background: var(--field-hi); }
+.news-form button:hover { background: var(--burgundy-deep); }
 .news-form button:disabled { opacity: 0.6; cursor: not-allowed; }
 
-/* ---- RESPONSIVE ---- */
-
-@media (max-width: 900px) {
-  .news-form { flex-direction: column; border-radius: 18px; }
-  .news-form button { padding: 16px 0; }
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
 }
 
-/* ---- REDUCED MOTION ---- */
+@media (max-width: 900px) {
+  .news-form { flex-direction: column; border-radius: 16px; }
+  .news-form button { padding: 16px 0; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -15,14 +15,6 @@ import {
 } from "framer-motion";
 import { submitContact } from "@/lib/contact";
 
-/**
- * THE singular site-wide capture form. Every CTA on the site opens this
- * one shared modal — there are no parallel forms. The "What are you here
- * for?" select auto-presets to whichever button opened it but the visitor
- * can change it. Submissions POST to /api/waitlist (delivered to
- * jchhetree@gmail.com via FormSubmit).
- */
-
 export type WaitlistIntent =
   | "Waitlist"
   | "Nominate a guest"
@@ -40,50 +32,45 @@ const INTENTS: WaitlistIntent[] = [
   "Events",
 ];
 
-/**
- * Per-intent verbiage map. The form architecture / endpoint / styling are
- * shared; only the visible copy adapts to whichever CTA opened the modal.
- * The visitor can still change the intent select after open.
- */
 const COPY: Record<
   WaitlistIntent,
   { headingLead: string; headingEm: string; submit: string; sub: string }
 > = {
   Waitlist: {
     headingLead: "Join the",
-    headingEm: "waitlist.",
-    submit: "Join the waitlist",
-    sub: "One list for the people building. Drop your name + email.",
+    headingEm: "circle.",
+    submit: "Join the circle",
+    sub: "One list for the people building. Drop your name and email.",
   },
   "Nominate a guest": {
     headingLead: "Nominate a",
     headingEm: "guest.",
     submit: "Submit nomination",
-    sub: "Tell us who belongs at the table. Drop your name + email and who you'd nominate.",
+    sub: "Tell us who belongs at the table. Drop your name, email, and who you'd nominate.",
   },
   "Sponsor / Partner": {
     headingLead: "Sponsor /",
     headingEm: "Partner.",
     submit: "Send inquiry",
-    sub: "For brands building alongside us. Drop your name + email and we'll reach out.",
+    sub: "For brands building alongside us. Drop your name and email and we'll reach out.",
   },
   Episodes: {
     headingLead: "Get notified on new",
     headingEm: "episodes.",
     submit: "Notify me",
-    sub: "We'll send each new drop straight to your inbox. Drop your name + email.",
+    sub: "We'll send each new drop straight to your inbox.",
   },
   Newsletter: {
-    headingLead: "Subscribe to the",
-    headingEm: "newsletter.",
+    headingLead: "Subscribe to",
+    headingEm: "Owner's Notes.",
     submit: "Subscribe",
-    sub: "Field notes from the circle. Drop your name + email.",
+    sub: "Lessons and field notes from inside the circle. Weekly.",
   },
   Events: {
     headingLead: "Join the",
     headingEm: "events list.",
     submit: "Save my seat",
-    sub: "First access to gatherings, tapings, and dinners. Drop your name + email.",
+    sub: "First access to gatherings, tapings, and dinners.",
   },
 };
 
@@ -146,8 +133,6 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
     const message =
       (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
 
-    // All site forms funnel through /api/contact via submitContact(). The
-    // "intent" select is preserved in the message body so context isn't lost.
     const composedMessage = message
       ? `Intent: ${intentValue}\n\n${message}`
       : `Intent: ${intentValue}`;
@@ -162,8 +147,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
         source: composedSource,
       });
     } catch {
-      // submitContact never throws (returns {success:false} instead), but
-      // belt-and-suspenders — we still want the optimistic confirmation UI.
+      // submitContact never throws (returns {success:false} instead)
     } finally {
       if (typeof window !== "undefined") {
         localStorage.setItem(
@@ -207,7 +191,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
           >
             <motion.div
               key="oc-wl-panel"
-              className="oc-wl-panel on-field-sec"
+              className="oc-wl-panel"
               role="dialog"
               aria-modal="true"
               aria-label="Join Owner's Circle"
@@ -228,22 +212,22 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                     className="serif"
                     style={{
                       fontSize: "32px",
-                      color: "var(--bone)",
+                      color: "var(--burgundy)",
                       marginBottom: "12px",
                       lineHeight: 1.15,
                     }}
                   >
-                    You&apos;re on the list.
+                    You&apos;re in.
                   </p>
                   <p
                     style={{
                       fontSize: "15px",
-                      color: "rgba(243,236,225,0.66)",
+                      color: "var(--espresso)",
+                      opacity: 0.7,
                       lineHeight: 1.65,
                     }}
                   >
-                    We&apos;ve got it. Watch your inbox — we&apos;ll be in touch
-                    as the circle opens.
+                    We&apos;ve got it. Watch your inbox -- we&apos;ll be in touch.
                   </p>
                   <button
                     className="pill"
@@ -255,27 +239,21 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                 </div>
               ) : (
                 <>
-                  <span
-                    className="tag"
-                    style={{
-                      color: "var(--ember)",
-                      display: "block",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    Owner&apos;s Circle
-                  </span>
+                  <div
+                    className="gold-divider"
+                    style={{ marginBottom: "20px" }}
+                  />
                   <h2
                     className="serif"
                     style={{
-                      fontSize: "clamp(28px,4vw,40px)",
+                      fontSize: "clamp(28px, 4vw, 38px)",
                       lineHeight: 1.1,
-                      color: "var(--bone)",
+                      color: "var(--burgundy)",
                       marginBottom: "10px",
                     }}
                   >
                     {COPY[intent].headingLead}{" "}
-                    <em className="serif-it" style={{ color: "var(--ember)" }}>
+                    <em className="serif-it" style={{ color: "var(--burgundy-deep)" }}>
                       {COPY[intent].headingEm}
                     </em>
                   </h2>
@@ -283,7 +261,8 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                     style={{
                       fontSize: "14.5px",
                       lineHeight: 1.65,
-                      color: "rgba(243,236,225,0.62)",
+                      color: "var(--espresso)",
+                      opacity: 0.65,
                       marginBottom: "30px",
                       maxWidth: "440px",
                     }}
@@ -293,27 +272,37 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 
                   <form onSubmit={handleSubmit} className="oc-form">
                     <div>
-                      <label className="oc-label">Name</label>
+                      <label className="oc-label" style={{ color: "var(--espresso)" }}>Name</label>
                       <input
                         type="text"
                         name="name"
                         required
                         className="oc-input"
                         placeholder="Your full name"
+                        style={{
+                          border: "1px solid var(--taupe)",
+                          background: "#fff",
+                          color: "var(--espresso)",
+                        }}
                       />
                     </div>
                     <div>
-                      <label className="oc-label">Email</label>
+                      <label className="oc-label" style={{ color: "var(--espresso)" }}>Email</label>
                       <input
                         type="email"
                         name="email"
                         required
                         className="oc-input"
                         placeholder="you@company.com"
+                        style={{
+                          border: "1px solid var(--taupe)",
+                          background: "#fff",
+                          color: "var(--espresso)",
+                        }}
                       />
                     </div>
                     <div>
-                      <label className="oc-label">
+                      <label className="oc-label" style={{ color: "var(--espresso)" }}>
                         What are you here for?
                       </label>
                       <select
@@ -323,6 +312,11 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                         onChange={(e) =>
                           setIntent(e.target.value as WaitlistIntent)
                         }
+                        style={{
+                          border: "1px solid var(--taupe)",
+                          background: "#fff",
+                          color: "var(--espresso)",
+                        }}
                       >
                         {INTENTS.map((i) => (
                           <option key={i} value={i}>
@@ -332,14 +326,19 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       </select>
                     </div>
                     <div>
-                      <label className="oc-label">
+                      <label className="oc-label" style={{ color: "var(--espresso)" }}>
                         Anything to add? (optional)
                       </label>
                       <textarea
                         name="message"
                         className="oc-input"
                         placeholder="A line about you, who you'd nominate, or how you'd partner."
-                        style={{ height: "92px" }}
+                        style={{
+                          height: "92px",
+                          border: "1px solid var(--taupe)",
+                          background: "#fff",
+                          color: "var(--espresso)",
+                        }}
                       />
                     </div>
                     <button
@@ -348,7 +347,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       disabled={loading}
                       style={{ alignSelf: "flex-start", marginTop: "4px" }}
                     >
-                      {loading ? "Sending…" : COPY[intent].submit}
+                      {loading ? "Sending..." : COPY[intent].submit}
                     </button>
                   </form>
                 </>
@@ -363,8 +362,8 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
           position: fixed;
           inset: 0;
           z-index: 500;
-          background: rgba(28,8,6,0.62);
-          backdrop-filter: blur(8px) saturate(120%);
+          background: rgba(76, 58, 51, 0.4);
+          backdrop-filter: blur(10px) saturate(120%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -375,35 +374,34 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
           max-width: 520px;
           max-height: 90vh;
           overflow-y: auto;
-          border-radius: 20px;
-          border: 1px solid rgba(243,236,225,0.18);
-          background:
-            radial-gradient(130% 120% at 78% 18%, var(--field-hi), var(--field) 58%, var(--field-lo) 100%);
-          padding: clamp(32px,5vw,52px);
+          border-radius: 16px;
+          border: 1px solid var(--taupe);
+          background: var(--ivory);
+          padding: clamp(32px, 5vw, 48px);
           position: relative;
-          box-shadow: 0 60px 120px -40px rgba(20,4,3,0.8);
+          box-shadow: 0 40px 100px -30px rgba(76, 58, 51, 0.3);
         }
         .oc-wl-close {
           position: absolute;
-          top: 22px;
-          right: 24px;
+          top: 20px;
+          right: 22px;
           background: none;
           border: none;
           cursor: pointer;
-          color: rgba(243,236,225,0.55);
+          color: var(--espresso);
+          opacity: 0.5;
           font-size: 11px;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
           font-weight: 600;
-          transition: color 0.3s ease;
+          transition: opacity 0.3s ease;
         }
-        .oc-wl-close:hover { color: var(--bone); }
+        .oc-wl-close:hover { opacity: 1; }
       `}</style>
     </WaitlistContext.Provider>
   );
 }
 
-/** Reusable CTA button — every call-to-action site-wide uses this. */
 export function WaitlistButton({
   children,
   intent = "Waitlist",

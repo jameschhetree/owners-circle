@@ -2,12 +2,6 @@
 
 import { WaitlistButton } from "@/components/Waitlist";
 
-/**
- * Consolidated into THE single shared site-wide form. This is no longer a
- * parallel form — it opens the shared waitlist modal with the
- * "Nominate a guest" intent preset (visitor can change it, and add the
- * nominee in the message field).
- */
 export function GuestNominationForm() {
   return (
     <div className="oc-form">
@@ -15,7 +9,7 @@ export function GuestNominationForm() {
         style={{
           fontSize: "15px",
           lineHeight: 1.7,
-          color: "rgba(243,236,225,0.72)",
+          color: "rgba(245,239,229,0.72)",
           maxWidth: "440px",
         }}
       >
@@ -27,7 +21,7 @@ export function GuestNominationForm() {
         intent="Nominate a guest"
         source="Nominate page"
         className="pill"
-        style={{ alignSelf: "flex-start", marginTop: "4px" }}
+        style={{ alignSelf: "flex-start", marginTop: "4px", background: "var(--gold)", color: "var(--burgundy-deep)" }}
       >
         Nominate a Guest
       </WaitlistButton>

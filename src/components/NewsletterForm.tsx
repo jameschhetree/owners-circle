@@ -2,30 +2,23 @@
 
 import { WaitlistButton } from "@/components/Waitlist";
 
-/**
- * The newsletter signup is no longer a parallel form — per the single
- * shared-form requirement it opens THE site-wide waitlist modal with the
- * "Newsletter" intent preset. The inline variant keeps the pill-input
- * silhouette so the section layout is unchanged; the email field simply
- * launches the shared modal (which collects email + name + intent).
- */
 interface NewsletterFormProps {
   variant?: "full" | "inline";
-  tone?: "field" | "paper";
+  tone?: "burgundy" | "paper";
 }
 
 export function NewsletterForm({
   variant = "full",
   tone = "paper",
 }: NewsletterFormProps) {
-  const onField = tone === "field";
+  const onBurgundy = tone === "burgundy";
 
   if (variant === "inline") {
     return (
       <div className="news-form news-form-cta">
-        <span className="news-form-hint">Get Inside the Circle, weekly</span>
+        <span className="news-form-hint">Get Owner&apos;s Notes, weekly</span>
         <WaitlistButton intent="Newsletter" source="Newsletter inline">
-          Join the Waitlist
+          Subscribe
         </WaitlistButton>
         <style>{`
           .news-form-cta {
@@ -36,7 +29,7 @@ export function NewsletterForm({
           .news-form-hint {
             flex: 1;
             font-size: 13px;
-            color: rgba(28,20,16,0.5);
+            color: rgba(76, 58, 51, 0.5);
             letter-spacing: 0.01em;
           }
           .news-form-cta button { border-radius: 999px; }
@@ -55,12 +48,13 @@ export function NewsletterForm({
         style={{
           fontSize: "15px",
           lineHeight: 1.7,
-          color: onField ? "rgba(243,236,225,0.7)" : "#5a4a3c",
+          color: onBurgundy ? "rgba(245,239,229,0.72)" : "var(--espresso)",
+          opacity: onBurgundy ? 1 : 0.7,
           maxWidth: "440px",
         }}
       >
-        One list for the people building — the newsletter, the room, and
-        what comes next. Join the waitlist and we&apos;ll keep you close.
+        Lessons, stories, and opportunities from inside the circle. Subscribe
+        free and we&apos;ll keep you close.
       </p>
       <WaitlistButton
         intent="Newsletter"
@@ -68,7 +62,7 @@ export function NewsletterForm({
         className="pill"
         style={{ alignSelf: "flex-start", marginTop: "4px" }}
       >
-        Join the Waitlist
+        Subscribe Free
       </WaitlistButton>
     </div>
   );

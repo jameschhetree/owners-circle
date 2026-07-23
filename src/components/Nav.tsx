@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { navLinks } from "@/data/nav";
 import { WaitlistButton } from "@/components/Waitlist";
 
-/**
- * Dir 2 chrome: tiny centered tracked wordmark, minimal nav, single bone pill.
- * `tone` controls contrast over field (bone) vs paper (ink) heroes.
- */
-export function Nav({ tone = "field" }: { tone?: "field" | "paper" }) {
+const links = [
+  { label: "Episodes", href: "/episodes" },
+  { label: "Notes", href: "/newsletter" },
+  { label: "About", href: "/about" },
+] as const;
+
+export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,11 +22,11 @@ export function Nav({ tone = "field" }: { tone?: "field" | "paper" }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onField = tone === "field";
-  const linkColor = onField
-    ? "rgba(243,236,225,0.62)"
-    : "rgba(28,20,16,0.55)";
-  const wmColor = onField ? "var(--bone)" : "var(--ink)";
+  const onBurgundy = tone === "burgundy";
+  const linkColor = onBurgundy
+    ? "rgba(245,239,229,0.65)"
+    : "rgba(76,58,51,0.6)";
+  const wmColor = onBurgundy ? "var(--parchment)" : "var(--burgundy)";
 
   return (
     <header
@@ -37,130 +39,135 @@ export function Nav({ tone = "field" }: { tone?: "field" | "paper" }) {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: scrolled ? "18px 40px" : "28px 56px",
-        transition: "padding 0.5s cubic-bezier(0.16,1,0.3,1), background 0.5s ease",
+        padding: scrolled ? "14px 28px" : "22px 40px",
+        transition:
+          "padding 0.5s cubic-bezier(0.16,1,0.3,1), background 0.5s ease",
         background: scrolled
-          ? onField
-            ? "rgba(60,13,10,0.72)"
-            : "rgba(246,241,232,0.82)"
+          ? onBurgundy
+            ? "rgba(97, 24, 35, 0.82)"
+            : "rgba(251, 248, 242, 0.88)"
           : "transparent",
         backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
       }}
     >
+      <Link
+        href="/"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          color: wmColor,
+          whiteSpace: "nowrap",
+        }}
+      >
+        <Image
+          src="/brand/oc-logo.jpg"
+          alt="Owner's Circle"
+          width={36}
+          height={36}
+          style={{ borderRadius: "50%" }}
+        />
+        <span className="wordmark oc-wm">Owner&apos;s Circle</span>
+      </Link>
+
       <nav
         className="oc-desktop-nav"
-        style={{ display: "flex", gap: "34px", flex: 1 }}
+        style={{ display: "flex", gap: "32px", alignItems: "center" }}
       >
-        {navLinks.map((l) => (
+        {links.map((l) => (
           <Link
             key={l.href}
             href={l.href}
             style={{
-              fontSize: "12px",
+              fontSize: "13px",
               letterSpacing: "0.02em",
               color: linkColor,
               transition: "color 0.3s ease",
+              fontWeight: 500,
             }}
             className="oc-navlink"
           >
             {l.label}
           </Link>
         ))}
-      </nav>
-
-      <Link
-        href="/"
-        className="wordmark oc-wm"
-        style={{
-          flex: 1,
-          textAlign: "center",
-          color: wmColor,
-          whiteSpace: "nowrap",
-        }}
-      >
-        Owner&apos;s Circle
-      </Link>
-
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          gap: "16px",
-        }}
-      >
         <WaitlistButton
-          intent="Waitlist"
+          intent="Newsletter"
           source="Nav"
           className="pill oc-cta"
+          style={{ fontSize: "11px", padding: "11px 22px" }}
         >
-          Join the Waitlist
+          Subscribe
         </WaitlistButton>
-        <button
-          aria-label="Menu"
-          onClick={() => setOpen((v) => !v)}
-          className="oc-burger"
-          style={{
-            display: "none",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: wmColor,
-            fontSize: "13px",
-            letterSpacing: "0.16em",
-            textTransform: "uppercase",
-          }}
-        >
-          {open ? "Close" : "Menu"}
-        </button>
-      </div>
+      </nav>
+
+      <button
+        aria-label="Menu"
+        onClick={() => setOpen((v) => !v)}
+        className="oc-burger"
+        style={{
+          display: "none",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          color: wmColor,
+          fontSize: "13px",
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          fontWeight: 500,
+        }}
+      >
+        {open ? "Close" : "Menu"}
+      </button>
 
       {open && (
         <div
           style={{
             position: "fixed",
             inset: 0,
-            top: "64px",
-            background: "var(--field)",
-            color: "var(--bone)",
+            top: "60px",
+            background: "var(--ivory)",
+            color: "var(--espresso)",
             zIndex: 199,
-            padding: "48px 40px",
+            padding: "48px 32px",
             display: "flex",
             flexDirection: "column",
-            gap: "28px",
+            gap: "24px",
           }}
         >
-          {navLinks.map((l) => (
+          {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="serif"
-              style={{ fontSize: "34px", color: "var(--bone)" }}
+              style={{
+                fontSize: "36px",
+                color: "var(--burgundy)",
+                borderBottom: "1px solid var(--taupe)",
+                paddingBottom: "20px",
+              }}
             >
               {l.label}
             </Link>
           ))}
           <WaitlistButton
-            intent="Waitlist"
+            intent="Newsletter"
             source="Nav (mobile)"
             className="pill"
-            style={{ marginTop: "20px", alignSelf: "flex-start" }}
+            style={{ marginTop: "12px", alignSelf: "flex-start" }}
             onClick={() => setOpen(false)}
           >
-            Join the Waitlist
+            Subscribe
           </WaitlistButton>
         </div>
       )}
 
       <style>{`
-        .oc-navlink:hover { color: ${onField ? "var(--bone)" : "var(--field)"} !important; }
+        .oc-navlink:hover { color: ${onBurgundy ? "var(--parchment)" : "var(--burgundy)"} !important; }
         @media (max-width: 880px) {
           .oc-desktop-nav { display: none !important; }
-          .oc-cta { display: none !important; }
           .oc-burger { display: block !important; }
-          .oc-wm { text-align: left !important; flex: 1 !important; }
+          .oc-wm { font-size: 16px !important; }
         }
       `}</style>
     </header>
