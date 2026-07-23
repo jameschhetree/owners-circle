@@ -84,7 +84,7 @@ export function HeroField() {
                 margin: "24px auto 0",
               }}
             >
-              A DMV-first room for the owners, operators, creators, and tech
+              A room for the owners, operators, creators, and tech
               leaders building real companies.
             </p>
             <div style={{ marginTop: "36px", display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>

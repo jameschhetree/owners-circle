@@ -20,7 +20,7 @@ export default function EpisodesPage() {
         emphasis="people building what's next."
       >
         Long-form conversations with the owners, operators, creators, and tech
-        leaders building real companies across the DMV. New episodes coming
+        leaders building real companies. New episodes coming
         soon.
       </PageHero>
 

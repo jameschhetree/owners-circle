@@ -6,7 +6,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { EventWaitlistForm } from "@/components/EventWaitlistForm";
 
 const expect = [
-  { t: "A private room", d: "An intimate evening for DMV owners, operators, creators, and tech leaders -- capped, curated, no badges-and-booths energy." },
+  { t: "A private room", d: "An intimate evening for owners, operators, creators, and tech leaders -- capped, curated, no badges-and-booths energy." },
   { t: "Real conversation", d: "A live conversation or panel with a featured builder, the kind of honesty the podcast is built on." },
   { t: "Curated introductions", d: "We make the introductions that matter -- matched on what you're building and who you need." },
   { t: "First look at membership", d: "The first preview of Founding Membership and what the circle becomes next." },
@@ -27,7 +27,7 @@ export default function EventsPage() {
     <>
       <Nav tone="ivory" />
       <PageHero eyebrow="Owner's Circle Live" word="The room," emphasis="in one room.">
-        A private evening for DMV owners, operators, creators, and tech leaders.
+        A private evening for owners, operators, creators, and tech leaders.
         Conversations, curated networking, and the first look at Founding
         Membership.
       </PageHero>

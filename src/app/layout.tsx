@@ -21,9 +21,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 const TITLE =
-  "Owner's Circle | Podcast, Newsletter & Private Network for DMV Builders";
+  "Owner's Circle | Podcast, Newsletter & Private Network for Builders";
 const DESC =
-  "Owner's Circle is a DMV-first podcast, newsletter, and private network spotlighting business owners, operators, creators, and tech leaders building real companies, real influence, and real rooms.";
+  "Owner's Circle is a podcast, newsletter, and private network spotlighting business owners, operators, creators, and tech leaders building real companies, real influence, and real rooms.";
 
 export const metadata: Metadata = {
   title: TITLE,

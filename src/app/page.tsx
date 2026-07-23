@@ -12,7 +12,7 @@ const contentArms = [
   {
     label: "Owner's Circle",
     sub: "The Podcast",
-    desc: "Long-form conversations with the founders, operators, and builders shaping the DMV. Real stories, real lessons, real rooms.",
+    desc: "Long-form conversations with the founders, operators, and builders shaping what's next. Real stories, real lessons, real rooms.",
     href: "/episodes",
     cta: "View Episodes",
   },
@@ -34,6 +34,7 @@ export default function Home() {
 
       {/* HERO */}
       <section
+        className="hero-gradient-bg"
         style={{
           minHeight: "100vh",
           display: "flex",
@@ -42,7 +43,6 @@ export default function Home() {
           alignItems: "center",
           textAlign: "center",
           padding: "140px 28px 100px",
-          background: "var(--ivory)",
           position: "relative",
         }}
       >
@@ -50,12 +50,15 @@ export default function Home() {
           <Image
             src="/brand/oc-logo.jpg"
             alt="Owner's Circle"
-            width={80}
-            height={80}
+            width={160}
+            height={160}
             style={{
               borderRadius: "50%",
               margin: "0 auto 40px",
-              border: "2px solid var(--taupe)",
+              border: "3px solid var(--taupe)",
+              width: "clamp(120px, 18vw, 180px)",
+              height: "clamp(120px, 18vw, 180px)",
+              boxShadow: "0 12px 40px -8px rgba(122, 31, 43, 0.18)",
             }}
           />
         </Reveal>
@@ -90,7 +93,7 @@ export default function Home() {
             }}
           >
             A podcast, newsletter, and private network for the owners,
-            operators, and leaders building real companies in the DMV.
+            operators, and leaders building real companies.
           </p>
         </Reveal>
         <Reveal delay={0.24}>
@@ -131,18 +134,21 @@ export default function Home() {
             transform: "translateX(-50%)",
             width: "1px",
             height: "60px",
-            background: "linear-gradient(to bottom, var(--taupe), transparent)",
+            background: "linear-gradient(to bottom, var(--gold), transparent)",
           }}
           aria-hidden
         />
       </section>
 
-      {/* WHAT IS OWNER'S CIRCLE */}
+      {/* gold rule */}
+      <hr className="gold-hr" style={{ margin: "0 auto" }} />
+
+      {/* WHAT IS OWNER'S CIRCLE — parchment bg */}
       <section
-        className="on-paper-sec"
         style={{
           padding: "clamp(100px, 14vw, 160px) 28px",
-          borderTop: "1px solid var(--rule)",
+          background: "var(--parchment)",
+          position: "relative",
         }}
       >
         <Reveal>
@@ -244,7 +250,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED EPISODES TEASER */}
+      {/* FEATURED EPISODES TEASER — burgundy */}
       <section
         className="on-field-sec"
         style={{
@@ -291,6 +297,7 @@ export default function Home() {
             {featuredEps.map((ep, i) => (
               <RevealItem key={ep.id}>
                 <div
+                  className="oc-ep-row"
                   style={{
                     borderTop: "1px solid rgba(245,239,229,0.15)",
                     padding: "28px 0",
@@ -341,12 +348,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER CTA */}
+      {/* NEWSLETTER CTA — ivory bg */}
       <section
         className="on-paper-sec"
         style={{
           padding: "clamp(110px, 16vw, 180px) 28px",
-          borderTop: "1px solid var(--rule)",
           textAlign: "center",
         }}
       >
@@ -406,8 +412,11 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* FOR BUILDERS / FOR PARTNERS */}
-      <section className="on-paper-sec" style={{ borderTop: "1px solid var(--rule)" }}>
+      {/* gold rule */}
+      <hr className="gold-hr" style={{ margin: "0 auto" }} />
+
+      {/* FOR BUILDERS / FOR PARTNERS — parchment bg */}
+      <section style={{ background: "var(--parchment)", borderTop: "none" }}>
         <div className="oc-apply-grid">
           <Reveal className="oc-apply-c">
             <span
@@ -466,7 +475,7 @@ export default function Home() {
               }}
             >
               Reach the people{" "}
-              <em className="serif-it">building</em> the DMV.
+              <em className="serif-it">building.</em>
             </h3>
             <p
               style={{
@@ -494,16 +503,34 @@ export default function Home() {
       </section>
 
       <style>{`
-        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-        .oc-arm-card { background: var(--ivory); padding: clamp(32px, 4vw, 52px); }
+        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--taupe); border: 1px solid var(--taupe); }
+        .oc-arm-card {
+          background: var(--ivory);
+          padding: clamp(32px, 4vw, 52px);
+          transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+        .oc-arm-card:hover {
+          background: #fff;
+          box-shadow: 0 12px 36px -12px rgba(122, 31, 43, 0.1);
+        }
+        .oc-ep-row {
+          transition: background 0.3s ease;
+          border-radius: 4px;
+          margin: 0 -12px;
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+        }
+        .oc-ep-row:hover {
+          background: rgba(245, 239, 229, 0.06);
+        }
         .oc-apply-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; }
         .oc-apply-c { padding: clamp(70px, 10vw, 120px) clamp(28px, 4vw, 56px); }
-        .oc-apply-c { border-right: 1px solid var(--rule); }
+        .oc-apply-c { border-right: 1px solid var(--taupe); }
         .oc-apply-c2 { border-right: none; }
         @media (max-width: 760px) {
           .oc-arms-grid { grid-template-columns: 1fr; }
           .oc-apply-grid { grid-template-columns: 1fr; }
-          .oc-apply-c { border-right: none; border-bottom: 1px solid var(--rule); }
+          .oc-apply-c { border-right: none; border-bottom: 1px solid var(--taupe); }
         }
       `}</style>
     </>

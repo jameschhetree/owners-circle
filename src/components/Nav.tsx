@@ -63,9 +63,9 @@ export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
         <Image
           src="/brand/oc-logo.jpg"
           alt="Owner's Circle"
-          width={36}
-          height={36}
-          style={{ borderRadius: "50%" }}
+          width={44}
+          height={44}
+          style={{ borderRadius: "50%", transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1)" }}
         />
         <span className="wordmark oc-wm">Owner&apos;s Circle</span>
       </Link>
@@ -167,7 +167,7 @@ export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
         @media (max-width: 880px) {
           .oc-desktop-nav { display: none !important; }
           .oc-burger { display: block !important; }
-          .oc-wm { font-size: 16px !important; }
+          .oc-wm { font-size: 17px !important; }
         }
       `}</style>
     </header>

@@ -36,11 +36,11 @@ export function SiteFooter() {
   return (
     <footer
       style={{
-        background: "var(--parchment)",
-        color: "var(--espresso)",
+        background: "var(--espresso)",
+        color: "var(--parchment)",
         padding: "100px 28px 48px",
         position: "relative",
-        borderTop: "1px solid var(--taupe)",
+        borderTop: "none",
       }}
     >
       <div
@@ -62,11 +62,11 @@ export function SiteFooter() {
           <Image
             src="/brand/oc-logo.jpg"
             alt="Owner's Circle"
-            width={44}
-            height={44}
+            width={48}
+            height={48}
             style={{ borderRadius: "50%" }}
           />
-          <span className="wordmark" style={{ color: "var(--burgundy)" }}>
+          <span className="wordmark" style={{ color: "var(--parchment)" }}>
             Owner&apos;s Circle
           </span>
         </div>
@@ -76,13 +76,13 @@ export function SiteFooter() {
           style={{
             fontSize: "clamp(32px, 5vw, 52px)",
             lineHeight: 1.08,
-            color: "var(--burgundy)",
+            color: "var(--parchment)",
             maxWidth: "500px",
             marginBottom: "32px",
           }}
         >
           Don&apos;t just watch the circle.{" "}
-          <em className="serif-it" style={{ color: "var(--burgundy-deep)" }}>
+          <em className="serif-it" style={{ color: "var(--gold-champagne)" }}>
             Join it.
           </em>
         </h2>
@@ -102,7 +102,7 @@ export function SiteFooter() {
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: "40px",
-            borderTop: "1px solid var(--taupe)",
+            borderTop: "1px solid rgba(245, 239, 229, 0.15)",
             marginTop: "72px",
             paddingTop: "48px",
           }}
@@ -129,8 +129,8 @@ export function SiteFooter() {
                   style={{
                     display: "block",
                     fontSize: "14px",
-                    color: "var(--espresso)",
-                    opacity: 0.6,
+                    color: "var(--parchment)",
+                    opacity: 0.5,
                     marginBottom: "12px",
                     transition: "opacity 0.3s ease",
                   }}
@@ -148,8 +148,8 @@ export function SiteFooter() {
             display: "flex",
             justifyContent: "space-between",
             fontSize: "12px",
-            color: "var(--espresso)",
-            opacity: 0.4,
+            color: "var(--parchment)",
+            opacity: 0.35,
             marginTop: "56px",
             gap: "16px",
           }}
@@ -160,7 +160,7 @@ export function SiteFooter() {
       </div>
 
       <style>{`
-        .oc-foot-link:hover { opacity: 1 !important; color: var(--burgundy) !important; }
+        .oc-foot-link:hover { opacity: 1 !important; color: var(--gold-champagne) !important; }
         @media (max-width: 760px) {
           .oc-foot-cols { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
           .oc-foot-base { flex-direction: column !important; }

@@ -71,7 +71,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-serif), "Cormorant Garamond", serif;
   font-weight: 600;
   letter-spacing: 0.08em;
-  font-size: 18px;
+  font-size: 21px;
 }
 
 .tag {
@@ -95,6 +95,8 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   border: none;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.4s ease, color 0.4s ease;
@@ -140,9 +142,10 @@ img { display: block; max-width: 100%; }
   color: var(--espresso);
 }
 .pill-outline.on-paper:hover {
-  border-color: var(--burgundy);
-  background: rgba(122, 31, 43, 0.04);
+  border-color: var(--gold);
+  background: rgba(201, 162, 94, 0.06);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(201, 162, 94, 0.15);
 }
 
 .link-ul {
@@ -256,12 +259,72 @@ select.oc-input { appearance: none; cursor: pointer; }
 .gold-divider {
   width: 60px;
   height: 1px;
-  background: var(--gold);
+  background: linear-gradient(90deg, var(--gold), var(--gold-champagne));
+  animation: gold-divider-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes gold-divider-in {
+  from { width: 0; opacity: 0; }
+  to { width: 60px; opacity: 1; }
+}
+
+.gold-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-champagne), transparent);
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+.pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+  background-size: 250% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.7s ease;
+  pointer-events: none;
+}
+.pill:hover::after {
+  background-position: -50% 0;
+}
+
+.on-parchment-sec {
+  background: var(--parchment);
+  color: var(--espresso);
+  position: relative;
+}
+
+.on-espresso-sec {
+  background: var(--espresso);
+  color: var(--parchment);
+  position: relative;
 }
 
 @media (max-width: 900px) {
   .news-form { flex-direction: column; border-radius: 16px; }
   .news-form button { padding: 16px 0; }
+}
+
+@keyframes hero-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-gradient-bg {
+  background: linear-gradient(135deg, var(--ivory) 0%, #FDF9F0 25%, var(--parchment) 50%, #FBF5EA 75%, var(--ivory) 100%);
+  background-size: 400% 400%;
+  animation: hero-gradient-shift 16s ease infinite;
+}
+
+.oc-foot-link {
+  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease !important;
+}
+.oc-foot-link:hover {
+  transform: translateX(4px);
 }
 
 @media (prefers-reduced-motion: reduce) {

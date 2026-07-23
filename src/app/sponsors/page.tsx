@@ -11,7 +11,7 @@ export default function SponsorsPage() {
   return (
     <>
       <Nav tone="ivory" />
-      <PageHero eyebrow="For partners" word="Partner with the room" emphasis="for DMV builders.">
+      <PageHero eyebrow="For partners" word="Partner with the room" emphasis="for builders.">
         Reach founders, owners, executives, creators, and decision-makers across
         the podcast, newsletter, and live events.
       </PageHero>
@@ -28,7 +28,7 @@ export default function SponsorsPage() {
               <em className="serif-it" style={{ color: "var(--burgundy-deep)" }}>
                 actually building
               </em>{" "}
-              the DMV.
+              what&apos;s next.
             </h2>
           </Reveal>
           <RevealGroup className="oc-aud-grid" stagger={0.05}>

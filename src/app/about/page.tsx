@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <Nav tone="ivory" />
       <PageHero eyebrow="About" word="Real owners." emphasis="Real rooms.">
-        Owner&apos;s Circle is a DMV-first podcast, newsletter, and private
+        Owner&apos;s Circle is a podcast, newsletter, and private
         network -- and the start of a room for the people actually building.
       </PageHero>
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
             <div style={{ fontSize: "clamp(16px,1.5vw,18px)", lineHeight: 1.85, color: "var(--espresso)", opacity: 0.75, display: "flex", flexDirection: "column", gap: "24px" }}>
               <p>
                 Owner&apos;s Circle is built by James Chhetree -- a podcast studio
-                owner, interviewer, builder, and connector in the DMV.
+                owner, interviewer, builder, and connector.
               </p>
               <p>
                 After producing shows, working with founders, and sitting across

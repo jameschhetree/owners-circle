@@ -20,7 +20,7 @@ export default function NewsletterPage() {
       <Nav tone="ivory" />
       <PageHero eyebrow="Owner's Notes -- Weekly" word="The brief from" emphasis="inside the circle.">
         Every week -- sharp takeaways from featured owners and leaders, plus the
-        asks, opportunities, and introductions shaping the DMV business
+        asks, opportunities, and introductions from inside the business
         community.
       </PageHero>
 
@@ -83,7 +83,7 @@ export default function NewsletterPage() {
                 owners who last build the system before they need it.
               </p>
               <p style={{ fontSize: "14px", lineHeight: 1.7, color: "rgba(245,239,229,0.72)" }}>
-                <strong style={{ color: "var(--parchment)" }}>The Ask --</strong> A DMV
+                <strong style={{ color: "var(--parchment)" }}>The Ask --</strong> An
                 operator scaling past 50 people is looking for a fractional
                 finance lead. Reply to connect.
               </p>

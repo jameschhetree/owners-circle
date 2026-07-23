@@ -13,7 +13,7 @@ export const episodes: Episode[] = [
     id: "ep-001",
     guestName: "Coming Soon",
     role: "Founder / CEO",
-    title: "Building from zero to acquisition in the DMV",
+    title: "Building from zero to acquisition",
     category: "Ownership",
     description: "A conversation about what it really takes to build a company from nothing, make hard decisions, and come out the other side.",
     comingSoon: true,
@@ -42,7 +42,7 @@ export const episodes: Episode[] = [
     role: "Real Estate Operator",
     title: "What commercial real estate teaches you about people",
     category: "Leadership",
-    description: "Lessons from managing properties, tenants, and teams across the DMV market.",
+    description: "Lessons from managing properties, tenants, and teams across multiple markets.",
     comingSoon: true,
   },
   {
