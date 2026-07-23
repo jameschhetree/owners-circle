@@ -71,7 +71,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-serif), "Cormorant Garamond", serif;
   font-weight: 600;
   letter-spacing: 0.08em;
-  font-size: 21px;
+  font-size: 24px;
 }
 
 .tag {

@@ -104,10 +104,10 @@ export default function Home() {
             style={{
               borderRadius: "50%",
               margin: "0 auto 44px",
-              border: "2px solid var(--gold)",
-              width: "clamp(100px, 16vw, 160px)",
-              height: "clamp(100px, 16vw, 160px)",
-              boxShadow: "0 16px 48px -8px rgba(0,0,0,0.35)",
+              border: "3px solid var(--gold)",
+              width: "clamp(120px, 20vw, 200px)",
+              height: "clamp(120px, 20vw, 200px)",
+              boxShadow: "0 20px 56px -8px rgba(0,0,0,0.4)",
             }}
           />
         </Reveal>
@@ -568,23 +568,22 @@ export default function Home() {
       </section>
 
       <style>{`
-        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .oc-arms-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 800px; margin: 72px auto 0; }
         .oc-arm-card {
           background: var(--ivory);
-          padding: clamp(36px, 5vw, 60px);
+          padding: 48px 52px;
           border-left: 3px solid var(--burgundy);
-          transition: background 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.5s ease, box-shadow 0.5s ease;
+          border-radius: 0 16px 16px 0;
+          transition: background 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
         }
         .oc-arm-card:hover {
           background: #fff;
           border-left-color: var(--gold);
-          box-shadow: 0 16px 48px -16px rgba(122, 31, 43, 0.12);
+          box-shadow: 0 20px 56px -16px rgba(122, 31, 43, 0.12);
+          transform: translateX(6px);
         }
-        .oc-arm-card + .oc-arm-card {
-          border-top: none;
-        }
-        @media (min-width: 761px) {
-          .oc-arm-card:first-child { border-right: 1px solid var(--taupe); }
+        @media (max-width: 760px) {
+          .oc-arm-card { padding: 32px 28px; }
         }
         .oc-ep-row {
           transition: background 0.3s ease;
@@ -597,11 +596,10 @@ export default function Home() {
           background: rgba(245, 239, 229, 0.06);
         }
         .oc-apply-grid { display: grid; grid-template-columns: 1fr 1fr; }
-        .oc-apply-c { padding: clamp(70px, 10vw, 120px) clamp(28px, 4vw, 56px); }
+        .oc-apply-c { padding: clamp(70px, 10vw, 120px) clamp(40px, 5vw, 72px); }
         .oc-apply-dark { background: var(--burgundy); }
         .oc-apply-light { background: var(--parchment); }
         @media (max-width: 760px) {
-          .oc-arms-grid { grid-template-columns: 1fr; }
           .oc-apply-grid { grid-template-columns: 1fr; }
         }
       `}</style>
