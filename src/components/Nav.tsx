@@ -67,7 +67,7 @@ export function Nav({ tone = "ivory" }: { tone?: "ivory" | "burgundy" }) {
           height={52}
           style={{ borderRadius: "50%", transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1)" }}
         />
-        <span className="wordmark oc-wm">Owner&apos;s Circle</span>
+        <span className="wordmark oc-wm" style={{ fontWeight: 700 }}>Owner&apos;s Circle</span>
       </Link>
 
       <nav

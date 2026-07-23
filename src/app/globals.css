@@ -3,8 +3,10 @@
 :root {
   --burgundy: #7A1F2B;
   --burgundy-deep: #611823;
-  --gold: #C9A25E;
+  --gold: #B8923F;
+  --gold-light: #D4AF5A;
   --gold-champagne: #E3C88C;
+  --gold-bright: #F0D48A;
   --parchment: #F5EFE5;
   --ivory: #FBF8F2;
   --taupe: #D8CCBC;
@@ -16,14 +18,14 @@
 @theme inline {
   --color-burgundy: #7A1F2B;
   --color-burgundy-deep: #611823;
-  --color-gold: #C9A25E;
+  --color-gold: #B8923F;
   --color-gold-champagne: #E3C88C;
   --color-parchment: #F5EFE5;
   --color-ivory: #FBF8F2;
   --color-taupe: #D8CCBC;
   --color-espresso: #4C3A33;
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-playfair);
 }
 
 @layer base {
@@ -46,14 +48,14 @@ html.lenis, html.lenis body { height: auto; }
 body {
   background: var(--ivory);
   color: var(--espresso);
-  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  font-family: var(--font-sans), "DM Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(201, 162, 94, 0.3);
+  background: rgba(184, 146, 63, 0.3);
   color: var(--burgundy-deep);
 }
 
@@ -62,23 +64,53 @@ button { font-family: inherit; }
 img { display: block; max-width: 100%; }
 
 .serif {
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
+  font-weight: 700;
 }
 .serif-it { font-style: italic; }
 
+.display {
+  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
 .wordmark {
-  font-family: var(--font-serif), "Cormorant Garamond", serif;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 24px;
+  font-family: var(--font-serif), "Playfair Display", serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 22px;
 }
 
 .tag {
   letter-spacing: 0.18em;
   font-size: 11px;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+/* Metallic gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, #B8923F 0%, #D4AF5A 25%, #F0D48A 50%, #D4AF5A 75%, #B8923F 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 4s ease infinite;
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Static gold gradient for smaller text */
+.gold-text-static {
+  background: linear-gradient(135deg, #B8923F 0%, #D4AF5A 40%, #F0D48A 60%, #D4AF5A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .pill {
@@ -109,14 +141,15 @@ img { display: block; max-width: 100%; }
 .pill:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
 
 .pill-gold {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-champagne) 100%);
+  background: linear-gradient(135deg, #B8923F 0%, #D4AF5A 30%, #F0D48A 50%, #D4AF5A 70%, #B8923F 100%);
+  background-size: 200% auto;
   color: var(--burgundy-deep);
   font-weight: 700;
-  box-shadow: 0 8px 28px -6px rgba(201,162,94,0.35);
+  box-shadow: 0 8px 28px -6px rgba(184,146,63,0.4);
+  animation: gold-shimmer 4s ease infinite;
 }
 .pill-gold:hover {
-  background: linear-gradient(135deg, var(--gold-champagne) 0%, var(--gold) 100%);
-  box-shadow: 0 14px 36px -8px rgba(201,162,94,0.45);
+  box-shadow: 0 14px 36px -8px rgba(184,146,63,0.55);
 }
 
 .pill-outline {
@@ -148,9 +181,9 @@ img { display: block; max-width: 100%; }
 }
 .pill-outline.on-paper:hover {
   border-color: var(--gold);
-  background: rgba(201, 162, 94, 0.06);
+  background: rgba(184, 146, 63, 0.06);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px rgba(201, 162, 94, 0.15);
+  box-shadow: 0 8px 24px -8px rgba(184, 146, 63, 0.15);
 }
 
 .link-ul {
@@ -200,7 +233,7 @@ img { display: block; max-width: 100%; }
   width: 100%;
   padding: 15px 18px;
   border-radius: 10px;
-  font-family: var(--font-sans), "Inter", sans-serif;
+  font-family: var(--font-sans), "DM Sans", sans-serif;
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s ease, background 0.3s ease;
@@ -238,7 +271,7 @@ select.oc-input { appearance: none; cursor: pointer; }
   border: none;
   outline: none;
   padding: 18px 26px;
-  font-family: var(--font-sans), "Inter", sans-serif;
+  font-family: var(--font-sans), "DM Sans", sans-serif;
   font-size: 15px;
   background: none;
   color: var(--espresso);
@@ -263,8 +296,8 @@ select.oc-input { appearance: none; cursor: pointer; }
 
 .gold-divider {
   width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-champagne));
+  height: 2px;
+  background: linear-gradient(90deg, #B8923F, #F0D48A, #B8923F);
   animation: gold-divider-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -276,7 +309,7 @@ select.oc-input { appearance: none; cursor: pointer; }
 .gold-hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-champagne), transparent);
+  background: linear-gradient(90deg, transparent, #B8923F, #F0D48A, #B8923F, transparent);
   margin: 0 auto;
   max-width: 200px;
 }
@@ -341,6 +374,14 @@ select.oc-input { appearance: none; cursor: pointer; }
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: overlay;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
 }
 
 @media (prefers-reduced-motion: reduce) {

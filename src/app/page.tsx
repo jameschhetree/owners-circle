@@ -11,25 +11,17 @@ import { episodes } from "@/data/episodes";
 
 const contentArms = [
   {
-    label: "Owner's Circle",
-    sub: "The Podcast",
-    desc: "Long-form conversations with the founders, operators, and builders shaping what's next. Real stories, real lessons, real rooms.",
+    label: "The Podcast",
+    desc: "Long-form conversations with the founders, operators, and builders shaping what's next.",
     href: "/episodes",
-    cta: "View Episodes",
+    cta: "Listen",
   },
   {
-    label: "Owner's Notes",
-    sub: "Solo Episodes & Articles",
-    desc: "Sharp takeaways, frameworks, and field notes from inside the circle. Written for builders who want the lesson without the fluff.",
+    label: "The Notes",
+    desc: "Sharp frameworks and field notes from inside the circle. For builders who want the lesson without the fluff.",
     href: "/newsletter",
-    cta: "Read Notes",
+    cta: "Read",
   },
-];
-
-const stats = [
-  { value: "7–9", unit: "Figure", label: "Founders" },
-  { value: "100%", unit: "", label: "Vetted Members" },
-  { value: "Weekly", unit: "", label: "New Content" },
 ];
 
 export default function Home() {
@@ -39,7 +31,7 @@ export default function Home() {
     <>
       <Nav tone="burgundy" />
 
-      {/* ─── HERO ─── */}
+      {/* ─── HERO ─── left-aligned, editorial, massive type */}
       <section
         className="oc-grain"
         style={{
@@ -47,8 +39,6 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
           padding: "160px 28px 120px",
           backgroundImage:
             "linear-gradient(165deg, rgba(122,31,43,0.55) 0%, rgba(97,24,35,0.6) 40%, rgba(61,14,20,0.72) 100%), url(/brand/hero-texture.png)",
@@ -60,19 +50,17 @@ export default function Home() {
       >
         <FloatingParticles />
 
-        {/* oversized typographic watermark */}
+        {/* oversized watermark */}
         <span
           aria-hidden
-          className="serif"
+          className="display"
           style={{
             position: "absolute",
-            bottom: "-8%",
-            right: "-4%",
-            fontSize: "clamp(200px, 35vw, 500px)",
-            lineHeight: 1,
-            color: "rgba(201,162,94,0.03)",
-            fontWeight: 700,
-            letterSpacing: "-0.04em",
+            bottom: "-12%",
+            right: "-6%",
+            fontSize: "clamp(250px, 40vw, 600px)",
+            lineHeight: 0.85,
+            color: "rgba(184,146,63,0.025)",
             pointerEvents: "none",
             userSelect: "none",
           }}
@@ -80,249 +68,223 @@ export default function Home() {
           OC
         </span>
 
-        <Reveal>
-          <Image
-            src="/brand/oc-logo.jpg"
-            alt="Owner's Circle"
-            width={160}
-            height={160}
-            style={{
-              borderRadius: "50%",
-              margin: "0 auto 48px",
-              border: "3px solid var(--gold)",
-              width: "clamp(120px, 20vw, 200px)",
-              height: "clamp(120px, 20vw, 200px)",
-              boxShadow:
-                "0 20px 56px -8px rgba(0,0,0,0.4), 0 0 0 8px rgba(201,162,94,0.08)",
-            }}
-          />
-        </Reveal>
-        <Reveal delay={0.08}>
-          <span
-            className="tag"
-            style={{
-              color: "var(--gold)",
-              display: "block",
-              marginBottom: "20px",
-              fontSize: "12px",
-            }}
-          >
-            A Private Network for Builders
-          </span>
-        </Reveal>
-        <Reveal delay={0.12}>
-          <h1
-            className="serif"
-            style={{
-              fontSize: "clamp(44px, 8vw, 88px)",
-              lineHeight: 1.0,
-              letterSpacing: "-0.025em",
-              color: "var(--parchment)",
-              maxWidth: "880px",
-              margin: "0 auto",
-            }}
-          >
-            The modern-day
-            <br />
-            <em className="serif-it" style={{ color: "var(--gold-champagne)" }}>
-              members only
-            </em>{" "}
-            club.
-          </h1>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <p
-            style={{
-              fontSize: "clamp(15px, 1.4vw, 18px)",
-              lineHeight: 1.75,
-              color: "var(--parchment)",
-              maxWidth: "520px",
-              margin: "28px auto 0",
-              opacity: 0.6,
-            }}
-          >
-            A podcast, newsletter, and private community for the owners,
-            operators, and leaders building real companies. Not for everyone.
-          </p>
-        </Reveal>
-        <Reveal delay={0.28}>
-          <div
-            style={{
-              marginTop: "44px",
-              display: "flex",
-              gap: "14px",
-              alignItems: "center",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            <WaitlistButton
-              intent="Waitlist"
-              source="Home hero"
-              className="pill pill-gold oc-arrow-cta"
-              style={{ fontSize: "13px", padding: "16px 36px" }}
-            >
-              Apply to Join <span className="oc-arrow">→</span>
-            </WaitlistButton>
-            <Link
-              href="/episodes"
-              className="pill-outline on-field"
-              style={{ fontSize: "12px", padding: "14px 28px" }}
-            >
-              Listen Now
-            </Link>
-          </div>
-        </Reveal>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
+          <Reveal>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px" }}>
+              <Image
+                src="/brand/oc-logo.jpg"
+                alt="Owner's Circle"
+                width={72}
+                height={72}
+                style={{
+                  borderRadius: "50%",
+                  border: "2px solid rgba(184,146,63,0.4)",
+                  boxShadow: "0 12px 40px -8px rgba(0,0,0,0.4)",
+                }}
+              />
+              <span className="tag" style={{ color: "var(--gold-light)", fontSize: "12px" }}>
+                A Private Network for Builders
+              </span>
+            </div>
+          </Reveal>
 
-        {/* bottom line */}
+          <Reveal delay={0.06}>
+            <h1
+              className="display"
+              style={{
+                fontSize: "clamp(48px, 9vw, 110px)",
+                lineHeight: 0.95,
+                color: "var(--parchment)",
+                maxWidth: "900px",
+              }}
+            >
+              The modern-day
+              <br />
+              <span className="gold-text" style={{ display: "inline" }}>
+                members only
+              </span>{" "}
+              club.
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.14}>
+            <p
+              style={{
+                fontSize: "clamp(16px, 1.5vw, 20px)",
+                lineHeight: 1.65,
+                color: "var(--parchment)",
+                maxWidth: "480px",
+                margin: "36px 0 0",
+                opacity: 0.55,
+                fontWeight: 400,
+              }}
+            >
+              A podcast, newsletter, and private community for the owners
+              and operators building real companies. Not for everyone.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.22}>
+            <div
+              style={{
+                marginTop: "48px",
+                display: "flex",
+                gap: "14px",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <WaitlistButton
+                intent="Waitlist"
+                source="Home hero"
+                className="pill pill-gold oc-arrow-cta"
+                style={{ fontSize: "13px", padding: "17px 38px" }}
+              >
+                Apply to Join <span className="oc-arrow">→</span>
+              </WaitlistButton>
+              <Link
+                href="/episodes"
+                className="pill-outline on-field oc-arrow-cta"
+                style={{ fontSize: "12px", padding: "15px 30px" }}
+              >
+                Listen Now <span className="oc-arrow">→</span>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* bottom drip line */}
         <div
           style={{
             position: "absolute",
-            bottom: "0",
-            left: "50%",
-            transform: "translateX(-50%)",
+            bottom: 0,
+            left: "15%",
             width: "1px",
-            height: "60px",
-            background:
-              "linear-gradient(to bottom, var(--gold-champagne), transparent)",
+            height: "80px",
+            background: "linear-gradient(to bottom, rgba(184,146,63,0.4), transparent)",
           }}
           aria-hidden
         />
       </section>
 
-      {/* ─── STATS ROW ─── */}
+      {/* ─── TWO ARMS ─── glass cards on dark texture */}
       <section
+        className="oc-grain"
         style={{
-          background: "var(--burgundy-deep)",
-          borderTop: "1px solid rgba(201,162,94,0.15)",
-          borderBottom: "1px solid rgba(201,162,94,0.15)",
+          padding: "clamp(90px, 13vw, 140px) 28px",
+          backgroundImage:
+            "linear-gradient(175deg, rgba(61,14,20,0.85) 0%, rgba(97,24,35,0.75) 50%, rgba(122,31,43,0.65) 100%), url(/brand/hero-texture.png)",
+          backgroundSize: "cover, cover",
+          backgroundPosition: "center, center",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div className="oc-stats-row">
-          {stats.map((s, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <div className="oc-stat">
-                <span className="oc-stat-value serif">
-                  {s.value}
-                  {s.unit && (
-                    <span className="oc-stat-unit">{s.unit}</span>
-                  )}
-                </span>
-                <span className="oc-stat-label">{s.label}</span>
-              </div>
-            </Reveal>
-          ))}
+        <FloatingParticles color="rgba(184,146,63,0.4)" />
+        <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 2 }}>
+          <Reveal>
+            <div style={{ marginBottom: "60px" }}>
+              <span className="tag gold-text-static" style={{ display: "block", marginBottom: "16px" }}>
+                Two formats. One circle.
+              </span>
+              <h2
+                className="display"
+                style={{
+                  fontSize: "clamp(32px, 5.5vw, 60px)",
+                  lineHeight: 0.95,
+                  color: "var(--parchment)",
+                  maxWidth: "600px",
+                }}
+              >
+                Content built{" "}
+                <em className="serif-it" style={{ fontWeight: 500 }}>for the room.</em>
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="oc-arms-grid">
+            <RevealGroup className="oc-arms-grid" stagger={0.12}>
+              {contentArms.map((arm) => (
+                <RevealItem key={arm.label}>
+                  <div className="oc-arm-card glass-card">
+                    <h3
+                      className="display"
+                      style={{
+                        fontSize: "clamp(28px, 3.5vw, 44px)",
+                        lineHeight: 1.0,
+                        color: "var(--parchment)",
+                        marginBottom: "18px",
+                      }}
+                    >
+                      {arm.label}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "15px",
+                        lineHeight: 1.7,
+                        color: "var(--parchment)",
+                        opacity: 0.5,
+                        marginBottom: "32px",
+                      }}
+                    >
+                      {arm.desc}
+                    </p>
+                    <Link
+                      href={arm.href}
+                      className="pill-outline on-field oc-arrow-cta"
+                      style={{ fontSize: "11px", padding: "12px 24px" }}
+                    >
+                      {arm.cta} <span className="oc-arrow">→</span>
+                    </Link>
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
         </div>
       </section>
 
-      {/* ─── TWO ARMS ─── parchment bg */}
+      {/* ─── NOT FOR EVERYONE ─── editorial statement */}
       <section
         style={{
-          padding: "clamp(100px, 14vw, 160px) 28px",
-          background: "var(--parchment)",
+          padding: "clamp(100px, 16vw, 200px) 28px",
+          background: "var(--ivory)",
           position: "relative",
+          overflow: "hidden",
         }}
       >
         <Reveal>
-          <Parallax
-            style={{
-              maxWidth: "700px",
-              margin: "0 auto",
-              textAlign: "center",
-            }}
-            y={-30}
-            opacityFrom={0.8}
-            opacityTo={0.8}
-          >
-            <div
-              className="gold-divider"
-              style={{ margin: "0 auto 36px" }}
-            />
+          <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
             <h2
-              className="serif"
+              className="display"
               style={{
-                fontSize: "clamp(30px, 5vw, 54px)",
-                lineHeight: 1.1,
+                fontSize: "clamp(40px, 7vw, 90px)",
+                lineHeight: 0.95,
                 color: "var(--burgundy)",
               }}
             >
-              Two arms. One circle.
+              This isn&apos;t for{" "}
+              <em className="serif-it" style={{ fontWeight: 500 }}>everyone.</em>
             </h2>
             <p
               style={{
-                margin: "28px auto 0",
-                fontSize: "clamp(15px, 1.3vw, 17px)",
+                margin: "36px auto 0",
+                fontSize: "clamp(16px, 1.4vw, 19px)",
                 lineHeight: 1.75,
                 color: "var(--espresso)",
-                opacity: 0.75,
-                maxWidth: "560px",
+                opacity: 0.55,
+                maxWidth: "520px",
               }}
             >
-              Owner&apos;s Circle lives in two formats — the podcast brings the
-              conversations, and Owner&apos;s Notes delivers the lessons, frameworks,
-              and field notes directly to you.
+              A community with one common aim — designed for founders who
+              want to become their best selves in every aspect of life.
             </p>
-          </Parallax>
+            <div className="gold-divider" style={{ margin: "48px auto 0" }} />
+          </div>
         </Reveal>
-
-        <div
-          className="oc-arms-grid"
-          style={{
-            maxWidth: "960px",
-            margin: "72px auto 0",
-          }}
-        >
-          <RevealGroup className="oc-arms-grid" stagger={0.1}>
-            {contentArms.map((arm) => (
-              <RevealItem key={arm.label}>
-                <div className="oc-arm-card">
-                  <span
-                    className="tag"
-                    style={{
-                      color: "var(--gold)",
-                      display: "block",
-                      marginBottom: "14px",
-                    }}
-                  >
-                    {arm.sub}
-                  </span>
-                  <h3
-                    className="serif"
-                    style={{
-                      fontSize: "clamp(26px, 3vw, 36px)",
-                      lineHeight: 1.15,
-                      color: "var(--burgundy)",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    {arm.label}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "15px",
-                      lineHeight: 1.7,
-                      color: "var(--espresso)",
-                      opacity: 0.75,
-                      marginBottom: "28px",
-                    }}
-                  >
-                    {arm.desc}
-                  </p>
-                  <Link
-                    href={arm.href}
-                    className="pill-outline on-paper oc-arrow-cta"
-                    style={{ fontSize: "11px", padding: "11px 22px" }}
-                  >
-                    {arm.cta} <span className="oc-arrow">→</span>
-                  </Link>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
       </section>
 
-      {/* ─── FEATURED EPISODES ─── burgundy */}
+      {/* ─── FEATURED EPISODES ─── */}
       <section
         className="on-field-sec oc-grain"
         style={{
@@ -333,7 +295,6 @@ export default function Home() {
           backgroundPosition: "center, center",
         }}
       >
-        <FloatingParticles color="rgba(201,162,94,0.5)" />
         <div style={{ maxWidth: "960px", margin: "0 auto", position: "relative", zIndex: 2 }}>
           <Reveal>
             <div
@@ -347,15 +308,15 @@ export default function Home() {
               }}
             >
               <div>
-                <span className="tag" style={{ color: "var(--gold)" }}>
+                <span className="tag gold-text-static">
                   Coming Soon
                 </span>
                 <h2
-                  className="serif"
+                  className="display"
                   style={{
-                    fontSize: "clamp(32px, 5vw, 52px)",
-                    lineHeight: 1.05,
-                    marginTop: "12px",
+                    fontSize: "clamp(36px, 5.5vw, 56px)",
+                    lineHeight: 0.95,
+                    marginTop: "14px",
                     color: "var(--parchment)",
                   }}
                 >
@@ -374,7 +335,7 @@ export default function Home() {
                 <div
                   className="oc-ep-row"
                   style={{
-                    borderTop: "1px solid rgba(245,239,229,0.15)",
+                    borderTop: "1px solid rgba(245,239,229,0.12)",
                     padding: "28px 0",
                     display: "flex",
                     gap: "20px",
@@ -382,24 +343,20 @@ export default function Home() {
                     flexWrap: "wrap",
                     borderBottom:
                       i === featuredEps.length - 1
-                        ? "1px solid rgba(245,239,229,0.15)"
+                        ? "1px solid rgba(245,239,229,0.12)"
                         : "none",
                   }}
                 >
                   <span
-                    className="serif serif-it"
-                    style={{
-                      fontSize: "18px",
-                      color: "var(--gold)",
-                      minWidth: "40px",
-                    }}
+                    className="serif serif-it gold-text-static"
+                    style={{ fontSize: "20px", minWidth: "40px" }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
                     className="tag"
                     style={{
-                      color: "rgba(245,239,229,0.5)",
+                      color: "rgba(245,239,229,0.4)",
                       minWidth: "100px",
                     }}
                   >
@@ -408,10 +365,11 @@ export default function Home() {
                   <span
                     className="serif"
                     style={{
-                      fontSize: "clamp(20px, 2.5vw, 26px)",
+                      fontSize: "clamp(20px, 2.5vw, 28px)",
                       color: "var(--parchment)",
                       flex: 1,
-                      lineHeight: 1.25,
+                      lineHeight: 1.2,
+                      fontWeight: 600,
                     }}
                   >
                     {ep.title}
@@ -423,139 +381,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── NOT FOR EVERYONE — editorial statement ─── */}
-      <section
-        style={{
-          padding: "clamp(80px, 12vw, 140px) 28px",
-          background: "var(--ivory)",
-          textAlign: "center",
-          position: "relative",
-        }}
-      >
-        <Reveal>
-          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-            <div className="gold-divider" style={{ margin: "0 auto 40px" }} />
-            <h2
-              className="serif"
-              style={{
-                fontSize: "clamp(36px, 6vw, 72px)",
-                lineHeight: 1.0,
-                color: "var(--burgundy)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              This isn&apos;t{" "}
-              <em className="serif-it">for everyone.</em>
-            </h2>
-            <p
-              style={{
-                margin: "32px auto 0",
-                fontSize: "clamp(15px, 1.4vw, 18px)",
-                lineHeight: 1.8,
-                color: "var(--espresso)",
-                opacity: 0.65,
-                maxWidth: "520px",
-              }}
-            >
-              Owner&apos;s Circle is a community with one common aim and one
-              clear expectation — designed for founders who want to become
-              their best selves in every aspect of life.
-            </p>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ─── NEWSLETTER CTA ─── deep dark texture */}
+      {/* ─── NEWSLETTER CTA ─── deep dark */}
       <section
         className="oc-grain"
         style={{
-          padding: "clamp(100px, 14vw, 160px) 28px",
-          textAlign: "center",
+          padding: "clamp(110px, 16vw, 180px) 28px",
           backgroundImage:
-            "linear-gradient(175deg, rgba(18,10,11,0.82) 0%, rgba(31,15,19,0.75) 40%, rgba(61,14,20,0.65) 100%), url(/brand/dark-texture.png)",
+            "linear-gradient(175deg, rgba(18,10,11,0.85) 0%, rgba(31,15,19,0.78) 40%, rgba(61,14,20,0.65) 100%), url(/brand/dark-texture.png)",
           backgroundSize: "cover, cover",
           backgroundPosition: "center, center",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        <FloatingParticles color="rgba(201,162,94,0.4)" />
-        {/* gold radial glow */}
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "80vw",
-            height: "80vw",
-            maxWidth: "700px",
-            maxHeight: "700px",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(201,162,94,0.06) 0%, transparent 60%)",
-            pointerEvents: "none",
-          }}
-        />
+        <FloatingParticles color="rgba(184,146,63,0.35)" />
         <Reveal>
           <div
             style={{
-              maxWidth: "620px",
+              maxWidth: "700px",
               margin: "0 auto",
+              textAlign: "center",
               position: "relative",
               zIndex: 2,
             }}
           >
-            <div
-              className="gold-divider"
-              style={{ margin: "0 auto 36px" }}
-            />
-            <span
-              className="tag"
-              style={{
-                color: "var(--gold)",
-                display: "block",
-                marginBottom: "20px",
-              }}
-            >
+            <span className="tag gold-text-static" style={{ display: "block", marginBottom: "24px" }}>
               Owner&apos;s Notes — Weekly
             </span>
             <h2
-              className="serif"
+              className="display"
               style={{
-                fontSize: "clamp(32px, 5vw, 56px)",
-                lineHeight: 1.08,
+                fontSize: "clamp(36px, 6vw, 72px)",
+                lineHeight: 0.95,
                 color: "var(--parchment)",
               }}
             >
               Stay inside{" "}
-              <em
-                className="serif-it"
-                style={{ color: "var(--gold-champagne)" }}
-              >
-                the circle.
-              </em>
+              <span className="gold-text">the circle.</span>
             </h2>
             <p
               style={{
-                margin: "24px auto 0",
-                fontSize: "16px",
+                margin: "28px auto 0",
+                fontSize: "17px",
                 lineHeight: 1.7,
                 color: "var(--parchment)",
-                opacity: 0.55,
-                maxWidth: "480px",
+                opacity: 0.45,
+                maxWidth: "460px",
               }}
             >
               Lessons, stories, and opportunities from inside the circle.
               One email a week. For the people building.
             </p>
-            <div style={{ marginTop: "40px" }}>
+            <div style={{ marginTop: "44px" }}>
               <WaitlistButton
                 intent="Newsletter"
                 source="Home · Newsletter CTA"
                 className="pill pill-gold oc-arrow-cta"
-                style={{ fontSize: "13px", padding: "16px 36px" }}
+                style={{ fontSize: "13px", padding: "17px 38px" }}
               >
                 Subscribe Free <span className="oc-arrow">→</span>
               </WaitlistButton>
@@ -564,44 +446,34 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ─── FOR BUILDERS / FOR PARTNERS ─── editorial split */}
+      {/* ─── FOR BUILDERS / FOR PARTNERS ─── */}
       <section style={{ borderTop: "none" }}>
         <div className="oc-apply-grid">
           <Reveal className="oc-apply-c oc-apply-dark oc-grain">
-            <span
-              className="tag"
-              style={{
-                color: "var(--gold)",
-                display: "block",
-                marginBottom: "18px",
-              }}
-            >
+            <span className="tag gold-text-static" style={{ display: "block", marginBottom: "18px" }}>
               For builders
             </span>
             <h3
-              className="serif"
+              className="display"
               style={{
-                fontSize: "clamp(28px, 4vw, 42px)",
-                lineHeight: 1.1,
+                fontSize: "clamp(28px, 4vw, 44px)",
+                lineHeight: 0.95,
                 color: "var(--parchment)",
               }}
             >
-              Know someone who{" "}
-              <em
-                className="serif-it"
-                style={{ color: "var(--gold-champagne)" }}
-              >
-                belongs?
-              </em>
+              Know someone
+              <br />
+              who{" "}
+              <em className="serif-it gold-text" style={{ fontWeight: 500 }}>belongs?</em>
             </h3>
             <p
               style={{
-                marginTop: "18px",
+                marginTop: "20px",
                 fontSize: "15px",
                 lineHeight: 1.7,
                 color: "var(--parchment)",
-                opacity: 0.6,
-                maxWidth: "380px",
+                opacity: 0.5,
+                maxWidth: "340px",
               }}
             >
               We spotlight people building real companies. They don&apos;t need
@@ -611,54 +483,49 @@ export default function Home() {
               intent="Nominate a guest"
               source="Home · Nominate"
               className="pill-outline on-field oc-arrow-cta"
-              style={{ marginTop: "32px", display: "inline-flex" }}
+              style={{ marginTop: "36px", display: "inline-flex" }}
             >
-              Nominate a Guest <span className="oc-arrow">→</span>
+              Nominate <span className="oc-arrow">→</span>
             </WaitlistButton>
           </Reveal>
 
           <Reveal className="oc-apply-c oc-apply-light" delay={0.06}>
-            <span
-              className="tag"
-              style={{
-                color: "var(--burgundy)",
-                display: "block",
-                marginBottom: "18px",
-              }}
-            >
+            <span className="tag" style={{ color: "var(--burgundy)", display: "block", marginBottom: "18px" }}>
               For partners
             </span>
             <h3
-              className="serif"
+              className="display"
               style={{
-                fontSize: "clamp(28px, 4vw, 42px)",
-                lineHeight: 1.1,
+                fontSize: "clamp(28px, 4vw, 44px)",
+                lineHeight: 0.95,
                 color: "var(--burgundy)",
               }}
             >
-              Reach the people{" "}
-              <em className="serif-it">building.</em>
+              Reach the
+              <br />
+              people{" "}
+              <em className="serif-it" style={{ fontWeight: 500 }}>building.</em>
             </h3>
             <p
               style={{
-                marginTop: "18px",
+                marginTop: "20px",
                 fontSize: "15px",
                 lineHeight: 1.7,
                 color: "var(--espresso)",
-                opacity: 0.7,
-                maxWidth: "380px",
+                opacity: 0.6,
+                maxWidth: "340px",
               }}
             >
-              Partner across the podcast, newsletter, and live events to reach
-              founders, owners, and decision-makers.
+              Partner across the podcast, newsletter, and live events to
+              reach founders, owners, and decision-makers.
             </p>
             <WaitlistButton
               intent="Sponsor / Partner"
               source="Home · Partner"
               className="pill-outline on-paper oc-arrow-cta"
-              style={{ marginTop: "32px", display: "inline-flex" }}
+              style={{ marginTop: "36px", display: "inline-flex" }}
             >
-              Partner With Us <span className="oc-arrow">→</span>
+              Partner <span className="oc-arrow">→</span>
             </WaitlistButton>
           </Reveal>
         </div>
@@ -671,81 +538,44 @@ export default function Home() {
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
           font-size: 1.1em;
         }
-        .oc-arrow-cta:hover .oc-arrow { transform: translateX(4px); }
+        .oc-arrow-cta:hover .oc-arrow { transform: translateX(5px); }
 
-        .oc-stats-row {
-          display: flex;
-          justify-content: center;
-          gap: clamp(40px, 6vw, 80px);
-          padding: 48px 28px;
-          max-width: 800px;
-          margin: 0 auto;
-        }
-        .oc-stat { text-align: center; }
-        .oc-stat-value {
-          display: block;
-          font-size: clamp(32px, 5vw, 52px);
-          line-height: 1;
-          color: var(--gold);
-          letter-spacing: -0.02em;
-        }
-        .oc-stat-unit {
-          font-size: 0.45em;
-          letter-spacing: 0.04em;
-          vertical-align: super;
-          color: var(--gold-champagne);
-          margin-left: 2px;
-        }
-        .oc-stat-label {
-          display: block;
-          margin-top: 10px;
-          font-size: 11px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--parchment);
-          opacity: 0.45;
-          font-weight: 500;
-        }
-
-        .oc-arms-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 800px; margin: 72px auto 0; }
+        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .oc-arm-card {
-          background: var(--ivory);
-          padding: 48px 52px;
-          border-left: 3px solid var(--burgundy);
-          border-radius: 0 16px 16px 0;
-          transition: background 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+          padding: 44px 40px;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease, border-color 0.5s ease;
         }
         .oc-arm-card:hover {
-          background: #fff;
-          border-left-color: var(--gold);
-          box-shadow: 0 20px 56px -16px rgba(122, 31, 43, 0.12);
-          transform: translateX(6px);
+          transform: translateY(-4px);
+          box-shadow: 0 24px 60px -12px rgba(0,0,0,0.3);
+          border-color: rgba(184,146,63,0.25);
         }
-        @media (max-width: 760px) {
-          .oc-arm-card { padding: 32px 28px; }
-        }
+
         .oc-ep-row {
-          transition: background 0.3s ease;
+          transition: background 0.3s ease, padding-left 0.3s ease;
           border-radius: 4px;
           margin: 0 -12px;
           padding-left: 12px !important;
           padding-right: 12px !important;
         }
         .oc-ep-row:hover {
-          background: rgba(245, 239, 229, 0.06);
+          background: rgba(245, 239, 229, 0.05);
+          padding-left: 20px !important;
         }
+
         .oc-apply-grid { display: grid; grid-template-columns: 1fr 1fr; }
-        .oc-apply-c { padding: clamp(70px, 10vw, 120px) clamp(40px, 5vw, 72px); position: relative; overflow: hidden; }
+        .oc-apply-c { padding: clamp(80px, 12vw, 140px) clamp(40px, 5vw, 80px); position: relative; overflow: hidden; }
         .oc-apply-dark {
-          background-image: linear-gradient(165deg, rgba(122,31,43,0.6) 0%, rgba(97,24,35,0.65) 100%), url(/brand/hero-texture.png);
+          background-image: linear-gradient(165deg, rgba(61,14,20,0.8) 0%, rgba(97,24,35,0.7) 100%), url(/brand/hero-texture.png);
           background-size: cover, cover;
           background-position: center, center;
         }
         .oc-apply-light { background: var(--parchment); }
+
         @media (max-width: 760px) {
+          .oc-arms-grid { grid-template-columns: 1fr; }
+          .oc-arm-card { padding: 32px 28px; }
           .oc-apply-grid { grid-template-columns: 1fr; }
-          .oc-stats-row { gap: 24px; padding: 36px 20px; }
-          .oc-stat-value { font-size: clamp(28px, 8vw, 40px); }
         }
       `}</style>
     </>
