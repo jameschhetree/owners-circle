@@ -32,7 +32,7 @@ export default function Home() {
     <>
       <Nav tone="burgundy" />
 
-      {/* HERO — burgundy */}
+      {/* HERO — burgundy with generated texture */}
       <section
         className="oc-grain"
         style={{
@@ -43,7 +43,9 @@ export default function Home() {
           alignItems: "center",
           textAlign: "center",
           padding: "140px 28px 100px",
-          background: "linear-gradient(165deg, var(--burgundy) 0%, var(--burgundy-deep) 60%, #3D0E14 100%)",
+          backgroundImage: "linear-gradient(165deg, rgba(122,31,43,0.7) 0%, rgba(97,24,35,0.75) 40%, rgba(61,14,20,0.85) 100%), url(/brand/hero-texture.png)",
+          backgroundSize: "cover, cover",
+          backgroundPosition: "center, center",
           position: "relative",
           overflow: "hidden",
         }}
@@ -396,13 +398,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER CTA — deep dark */}
+      {/* NEWSLETTER CTA — deep dark with generated texture */}
       <section
         className="oc-grain"
         style={{
           padding: "clamp(100px, 14vw, 160px) 28px",
           textAlign: "center",
-          background: "linear-gradient(175deg, #120A0B 0%, #1F0F13 40%, var(--burgundy-deep) 100%)",
+          backgroundImage: "linear-gradient(175deg, rgba(18,10,11,0.88) 0%, rgba(31,15,19,0.82) 40%, rgba(97,24,35,0.75) 100%), url(/brand/dark-texture.png)",
+          backgroundSize: "cover, cover",
+          backgroundPosition: "center, center",
           position: "relative",
           overflow: "hidden",
         }}
