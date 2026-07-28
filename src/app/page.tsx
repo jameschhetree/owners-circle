@@ -167,9 +167,24 @@ export default function Home() {
 
           <div className="oc-arms-grid">
             <RevealGroup className="oc-arms-grid" stagger={0.12}>
-              {contentArms.map((arm) => (
+              {contentArms.map((arm, i) => (
                 <RevealItem key={arm.label}>
                   <div className="oc-arm-card">
+                    <div style={{
+                      width: "48px",
+                      height: "48px",
+                      borderRadius: "50%",
+                      background: i === 0 ? "var(--burgundy)" : "linear-gradient(135deg, #B8923F, #D4AF5A)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "28px",
+                      fontSize: "18px",
+                      color: i === 0 ? "var(--parchment)" : "var(--burgundy-deep)",
+                      fontWeight: 700,
+                    }}>
+                      {i === 0 ? "🎙" : "✍"}
+                    </div>
                     <h3
                       className="display"
                       style={{
@@ -506,19 +521,34 @@ export default function Home() {
         }
         .oc-arrow-cta:hover .oc-arrow { transform: translateX(5px); }
 
-        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .oc-arms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .oc-arm-card {
-          padding: 44px 40px;
-          background: var(--parchment);
+          padding: 48px 44px;
+          background: #fff;
           border-radius: 20px;
-          border: 1px solid var(--taupe);
+          border: 1px solid rgba(216, 204, 188, 0.5);
+          box-shadow: 0 4px 24px -4px rgba(76, 58, 51, 0.06);
           transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease, border-color 0.5s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .oc-arm-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, var(--burgundy), var(--gold));
+          opacity: 0;
+          transition: opacity 0.4s ease;
         }
         .oc-arm-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 24px 60px -12px rgba(122,31,43,0.1);
+          transform: translateY(-6px);
+          box-shadow: 0 28px 64px -16px rgba(122,31,43,0.12);
           border-color: var(--gold);
         }
+        .oc-arm-card:hover::before { opacity: 1; }
 
         .oc-ep-row-light {
           transition: background 0.3s ease, padding-left 0.3s ease;
