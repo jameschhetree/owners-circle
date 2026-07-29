@@ -7,7 +7,7 @@ import { NewEpisodeModal } from "@/components/dashboard/NewEpisodeModal";
 import type { Episode } from "@/lib/dashboard-types";
 
 export default function PodcastPage() {
-  const { store, loaded, addPodcastEpisode, updateEpisode } = useDashboardStore();
+  const { store, loaded, addPodcastEpisode, updateEpisode, deleteEpisode } = useDashboardStore();
   const [showNew, setShowNew] = useState(false);
 
   if (!loaded) {
@@ -41,7 +41,7 @@ export default function PodcastPage() {
           {label} ({eps.length})
         </h3>
         {eps.map((ep) => (
-          <EpisodeCard key={ep.id} episode={ep} onUpdate={updateEpisode} />
+          <EpisodeCard key={ep.id} episode={ep} onUpdate={updateEpisode} onDelete={deleteEpisode} />
         ))}
       </div>
     );

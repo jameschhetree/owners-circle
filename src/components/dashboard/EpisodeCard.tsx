@@ -22,11 +22,14 @@ function countItems(ep: Episode) {
 export function EpisodeCard({
   episode,
   onUpdate,
+  onDelete,
 }: {
   episode: Episode;
   onUpdate: (ep: Episode) => void;
+  onDelete?: (id: string, type: "podcast" | "notes") => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const { done, total } = countItems(episode);
 
   function toggleItem(itemId: string) {
@@ -216,6 +219,61 @@ export function EpisodeCard({
                     Reactivate
                   </button>
                 )}
+                <div style={{ marginLeft: "auto" }}>
+                  {confirmDelete ? (
+                    <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+                      <span style={{ fontSize: "12px", color: "#b91c1c", fontWeight: 600 }}>Delete?</span>
+                      <button
+                        onClick={() => onDelete?.(episode.id, episode.type)}
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: "8px",
+                          border: "1px solid #b91c1c",
+                          background: "#b91c1c",
+                          color: "#fff",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Yes, delete
+                      </button>
+                      <button
+                        onClick={() => setConfirmDelete(false)}
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: "8px",
+                          border: "1px solid var(--rule)",
+                          background: "transparent",
+                          color: "var(--espresso)",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setConfirmDelete(true)}
+                      style={{
+                        padding: "8px 16px",
+                        borderRadius: "8px",
+                        border: "1px solid #fecaca",
+                        background: "transparent",
+                        color: "#b91c1c",
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        opacity: 0.7,
+                        transition: "opacity 0.2s ease",
+                      }}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>

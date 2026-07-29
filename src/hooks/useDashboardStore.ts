@@ -75,6 +75,19 @@ export function useDashboardStore() {
     [store, persist]
   );
 
+  const deleteEpisode = useCallback(
+    (id: string, type: "podcast" | "notes") => {
+      if (type === "podcast") {
+        const next = { ...store, podcastEpisodes: store.podcastEpisodes.filter((e) => e.id !== id) };
+        persist(next);
+      } else {
+        const next = { ...store, notesEpisodes: store.notesEpisodes.filter((e) => e.id !== id) };
+        persist(next);
+      }
+    },
+    [store, persist]
+  );
+
   const addProspect = useCallback(
     (p: Prospect) => {
       const next = { ...store, prospects: [p, ...store.prospects] };
@@ -118,6 +131,7 @@ export function useDashboardStore() {
     addPodcastEpisode,
     addNotesEpisode,
     updateEpisode,
+    deleteEpisode,
     addProspect,
     updateProspect,
     recentActivity: recentActivity.slice(0, 5),
