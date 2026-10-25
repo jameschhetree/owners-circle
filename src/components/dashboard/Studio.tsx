@@ -47,6 +47,7 @@ type View =
   | "overview"
   | "prospects"
   | "shot"
+  | "technical"
   | "episodes"
   | "submit"
   | "analytics"
@@ -71,8 +72,14 @@ const nav = [
     icon: Clapperboard,
   },
   {
+    id: "technical",
+    label: "Production · Delo",
+    href: "/dashboard/production",
+    icon: Film,
+  },
+  {
     id: "episodes",
-    label: "Production",
+    label: "Publishing · Ando",
     href: "/dashboard/podcast",
     icon: Film,
   },
@@ -99,6 +106,7 @@ const title: Record<View, string> = {
   overview: "A great show starts here.",
   prospects: "The next voice in the circle.",
   shot: "Recorded. Ready for the next step.",
+  technical: "Delo’s recording desk.",
   episodes: "From the edit to the audience.",
   submit: "Submit a new episode.",
   analytics: "Know what’s moving the show.",
@@ -445,7 +453,7 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                   <Plus size={17} />
                   Add prospect
                 </button>
-              ) : view === "shot" ? (
+              ) : view === "shot" || view === "technical" ? (
                 <button
                   className="btn primary"
                   onClick={() => openEpisode(true)}
@@ -532,7 +540,7 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                         href: "/dashboard/shot",
                       },
                       {
-                        label: "In production",
+                        label: "In publishing",
                         value: active.length,
                         caption: `${overdue.length} past their drop date`,
                         icon: Film,
@@ -597,7 +605,7 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                       </div>
                       <section className="panel">
                         <div className="section-title">
-                          <h2>On the production desk</h2>
+                          <h2>On Ando’s publishing desk</h2>
                           <Link href="/dashboard/podcast">
                             View all <ArrowRight size={15} />
                           </Link>
@@ -733,7 +741,16 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                   </div>
                 </>
               )}
-              {(view === "episodes" || view === "shot") && (
+              {view === "technical" && (
+                <p className="form-intro">
+                  Record the audio and video, upload the files to your shared
+                  drive, and save their links here. Ando takes over the episode
+                  handoff and publishing.
+                </p>
+              )}
+              {(view === "episodes" ||
+                view === "shot" ||
+                view === "technical") && (
                 <section className="panel">
                   <div className="list-toolbar">
                     <div className="search">
@@ -751,21 +768,45 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                       >
-                        <option value="all">All production</option>
-                        <option value="production">In production</option>
+                        <option value="all">All publishing</option>
+                        <option value="production">In publishing</option>
                         <option value="published">Published</option>
                       </select>
                     )}
                     <span>{visibleEpisodes.length} episodes</span>
                   </div>
                   {visibleEpisodes.length ? (
-                    visibleEpisodes.map((e) => (
-                      <EpisodeRow
-                        key={e.id}
-                        episode={e}
-                        onSelect={setSelected}
-                      />
-                    ))
+                    visibleEpisodes.map((e) =>
+                      view === "technical" ? (
+                        <button
+                          key={e.id}
+                          className="attention-row"
+                          onClick={() => setSelected(e.id)}
+                        >
+                          <Clapperboard size={20} />
+                          <div>
+                            <strong>
+                              Episode {e.number} · {e.title}
+                            </strong>
+                            <p>
+                              {e.shotDate
+                                ? `Recorded ${dateLabel(e.shotDate)}`
+                                : "Recording date needed"}{" "}
+                              ·{" "}
+                              {e.videoUrl && e.audioUrl
+                                ? "Audio + video uploaded"
+                                : "Upload links needed"}
+                            </p>
+                          </div>
+                        </button>
+                      ) : (
+                        <EpisodeRow
+                          key={e.id}
+                          episode={e}
+                          onSelect={setSelected}
+                        />
+                      ),
+                    )
                   ) : (
                     <Empty
                       icon={Clapperboard}
@@ -777,16 +818,20 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                             : "Your next episode belongs here."
                       }
                       body={
-                        view === "shot"
-                          ? "Log a completed recording, then submit it to create the publishing checklist."
-                          : "Submit an episode with its number, title, and drop date to get started."
+                        view === "technical"
+                          ? "Delo: log a recording and add the uploaded audio and video links."
+                          : view === "shot"
+                            ? "Ando: review Delo’s recording and submit it to start publishing."
+                            : "Submit an episode with its number, title, and drop date to get started."
                       }
                       action={
                         <button
                           className="btn primary"
-                          onClick={() => openEpisode(view === "shot")}
+                          onClick={() =>
+                            openEpisode(view === "shot" || view === "technical")
+                          }
                         >
-                          {view === "shot"
+                          {view === "shot" || view === "technical"
                             ? "Log episode shot"
                             : "Submit new episode"}
                           <Plus size={16} />
@@ -952,8 +997,8 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                     },
                     {
                       n: "02",
-                      title: "Log the recording",
-                      body: "As soon as the episode is shot, log its number, working title, guest, and recording date. It stays in “Episodes shot” until the final handoff.",
+                      title: "Delo records and uploads",
+                      body: "Delo handles audio/video recording and uploads only. His Production tab stores recording details and links to both uploaded files. Ando picks up the handoff from Episodes shot.",
                       href: "/dashboard/shot",
                       cta: "Log a recording",
                     },
@@ -969,7 +1014,7 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                       title: "Package, schedule, verify",
                       body: "Receive the edit, put it in Opus, choose clips, review captions and thumbnails, and schedule through Nuelink. Verify the published links before marking the episode published.",
                       href: "/dashboard/podcast",
-                      cta: "Open production",
+                      cta: "Open Ando’s publishing",
                     },
                     {
                       n: "05",
@@ -1035,6 +1080,7 @@ export default function Studio({ view = "overview" }: { view?: View }) {
           <EpisodeForm
             existing={editing as StudioEpisode | null}
             shot={shotMode}
+            technical={view === "technical"}
             busy={busy}
             onSave={async (record) => {
               if (await save("episode", record)) {
@@ -1101,12 +1147,15 @@ export default function Studio({ view = "overview" }: { view?: View }) {
             </span>
             <h2>{ep.title}</h2>
             <p>
-              {ep.guest || "Guest not set"} · {ep.owner || "Owner unassigned"}
+              {ep.guest || "Guest not set"} ·{" "}
+              {view === "technical" ? "Delo" : ep.owner || "Owner unassigned"}
             </p>
             <div className="detail-dates">
-              <span>
-                DROP DATE<strong>{dateLabel(ep.dropDate)}</strong>
-              </span>
+              {view !== "technical" && (
+                <span>
+                  DROP DATE<strong>{dateLabel(ep.dropDate)}</strong>
+                </span>
+              )}
               <span>
                 RECORDED<strong>{dateLabel(ep.shotDate)}</strong>
               </span>
@@ -1117,9 +1166,21 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                 Edit details
               </button>
             </div>
-            {ep.stage === "shot" ? (
+            {view === "technical" ? (
               <div className="handoff-box">
-                <h3>Ready for the production desk?</h3>
+                <h3>Recording & uploads</h3>
+                <p>
+                  {ep.shotDate
+                    ? "Recording logged."
+                    : "Add the recording date."}{" "}
+                  {ep.audioUrl && ep.videoUrl
+                    ? "Audio and video links saved. Ando can pick up the handoff in Episodes shot."
+                    : "Save both audio and video upload links using Edit details."}
+                </p>
+              </div>
+            ) : ep.stage === "shot" ? (
+              <div className="handoff-box">
+                <h3>Ready for Ando’s publishing desk?</h3>
                 <p>
                   Confirm the title and drop date to begin the publishing
                   checklist.
@@ -1127,7 +1188,7 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                 <button
                   className="btn primary"
                   onClick={() => {
-                    setEditing({ ...ep, stage: "production" });
+                    setEditing({ ...ep, owner: "Ando", stage: "production" });
                     setShotMode(false);
                     setModal("episode");
                   }}
@@ -1209,17 +1270,26 @@ export default function Studio({ view = "overview" }: { view?: View }) {
                       save("episode", { ...ep, stage: "production" })
                     }
                   >
-                    Reopen production checklist
+                    Reopen publishing checklist
                   </button>
                 )}
               </>
             )}
-            {[ep.videoUrl, ep.opusUrl, ep.nuelinkUrl].some(Boolean) && (
+            {[
+              ep.videoUrl,
+              ep.audioUrl,
+              ...(view === "technical" ? [] : [ep.opusUrl, ep.nuelinkUrl]),
+            ].some(Boolean) && (
               <div className="asset-links">
                 {[
-                  ["Editor video", ep.videoUrl],
-                  ["Opus project", ep.opusUrl],
-                  ["Nuelink schedule", ep.nuelinkUrl],
+                  ["Video upload", ep.videoUrl],
+                  ["Audio upload", ep.audioUrl],
+                  ...(view === "technical"
+                    ? []
+                    : [
+                        ["Opus project", ep.opusUrl],
+                        ["Nuelink schedule", ep.nuelinkUrl],
+                      ]),
                 ].map(
                   ([label, url]) =>
                     url && (
@@ -1243,8 +1313,9 @@ export default function Studio({ view = "overview" }: { view?: View }) {
               </div>
             )}
             <p className="form-help">
-              Checklist items track your team’s work. Checking one does not
-              upload a video or publish a post.
+              {view === "technical"
+                ? "Upload files to your shared drive, then save their links here."
+                : "Checklist items track your team’s work. Checking one does not upload a video or publish a post."}
             </p>
             {error && (
               <div className="form-error" role="alert">
@@ -1263,11 +1334,13 @@ export default function Studio({ view = "overview" }: { view?: View }) {
 function EpisodeForm({
   existing,
   shot = false,
+  technical = false,
   busy,
   onSave,
 }: {
   existing?: StudioEpisode | null;
   shot?: boolean;
+  technical?: boolean;
   busy: boolean;
   onSave: (e: StudioEpisode) => void;
 }) {
@@ -1283,27 +1356,32 @@ function EpisodeForm({
           number: Number(s("number")),
           title: s("title"),
           guest: s("guest"),
-          dropDate: s("dropDate"),
+          dropDate: technical ? existing?.dropDate || "" : s("dropDate"),
           shotDate: s("shotDate"),
-          owner: s("owner"),
+          owner: technical ? existing?.owner || "Ando" : s("owner"),
           videoUrl: s("videoUrl"),
-          opusUrl: s("opusUrl"),
-          nuelinkUrl: s("nuelinkUrl"),
+          audioUrl: s("audioUrl"),
+          opusUrl: technical ? existing?.opusUrl || "" : s("opusUrl"),
+          nuelinkUrl: technical ? existing?.nuelinkUrl || "" : s("nuelinkUrl"),
           notes: s("notes"),
-          stage: shot
-            ? "shot"
-            : existing?.stage === "published"
-              ? "published"
-              : "production",
+          stage: technical
+            ? existing?.stage || "shot"
+            : shot
+              ? "shot"
+              : existing?.stage === "published"
+                ? "published"
+                : "production",
           tasks: existing?.tasks || makeTasks(),
           createdAt: existing?.createdAt || new Date().toISOString(),
         });
       }}
     >
       <p className="form-intro">
-        {shot
-          ? "Capture the recording. You can finalize the release details when you submit."
-          : "Set the release details. Your editor-to-publishing checklist is created automatically."}
+        {technical
+          ? "Delo: record audio and video, upload to your shared drive, then paste both file links below."
+          : shot
+            ? "Capture the recording. You can finalize the release details when you submit."
+            : "Set the release details. Your editor-to-publishing checklist is created automatically."}
       </p>
       <div className="form-grid">
         <Field label="Episode number *">
@@ -1317,14 +1395,16 @@ function EpisodeForm({
             placeholder="e.g. 12"
           />
         </Field>
-        <Field label="Drop date (Eastern time)">
-          <input
-            name="dropDate"
-            type="date"
-            required={!shot}
-            defaultValue={existing?.dropDate}
-          />
-        </Field>
+        {!technical && (
+          <Field label="Drop date (Eastern time)">
+            <input
+              name="dropDate"
+              type="date"
+              required={!shot}
+              defaultValue={existing?.dropDate}
+            />
+          </Field>
+        )}
         <Field label="Episode title *" wide>
           <input
             name="title"
@@ -1341,13 +1421,15 @@ function EpisodeForm({
             placeholder="Guest name"
           />
         </Field>
-        <Field label="Producer / owner">
-          <input
-            name="owner"
-            defaultValue={existing?.owner ?? "Ando"}
-            placeholder="Who is driving this episode?"
-          />
-        </Field>
+        {!technical && (
+          <Field label="Producer / owner">
+            <input
+              name="owner"
+              defaultValue={existing?.owner ?? "Ando"}
+              placeholder="Who is driving this episode?"
+            />
+          </Field>
+        )}
         <Field label="Date recorded">
           <input
             name="shotDate"
@@ -1355,7 +1437,7 @@ function EpisodeForm({
             defaultValue={existing?.shotDate}
           />
         </Field>
-        <Field label="Editor video link">
+        <Field label="Uploaded video link">
           <input
             name="videoUrl"
             type="url"
@@ -1363,22 +1445,34 @@ function EpisodeForm({
             placeholder="https://drive.google.com/…"
           />
         </Field>
-        <Field label="Opus project link">
+        <Field label="Uploaded audio link">
           <input
-            name="opusUrl"
+            name="audioUrl"
             type="url"
-            defaultValue={existing?.opusUrl}
-            placeholder="https://…"
+            defaultValue={existing?.audioUrl}
+            placeholder="https://drive.google.com/…"
           />
         </Field>
-        <Field label="Nuelink schedule link">
-          <input
-            name="nuelinkUrl"
-            type="url"
-            defaultValue={existing?.nuelinkUrl}
-            placeholder="https://…"
-          />
-        </Field>
+        {!technical && (
+          <>
+            <Field label="Opus project link">
+              <input
+                name="opusUrl"
+                type="url"
+                defaultValue={existing?.opusUrl}
+                placeholder="https://…"
+              />
+            </Field>
+            <Field label="Nuelink schedule link">
+              <input
+                name="nuelinkUrl"
+                type="url"
+                defaultValue={existing?.nuelinkUrl}
+                placeholder="https://…"
+              />
+            </Field>
+          </>
+        )}
         <Field label="Handoff notes" wide>
           <textarea
             name="notes"
@@ -1388,7 +1482,7 @@ function EpisodeForm({
           />
         </Field>
       </div>
-      {!shot && (
+      {!shot && !technical && (
         <div className="checklist-preview">
           <span className="eyebrow">AUTOMATIC CHECKLIST</span>
           <p>
@@ -1463,7 +1557,10 @@ function ProspectForm({
                     ? "url"
                     : "text"
               }
-              defaultValue={p?.[key as keyof StudioProspect] ?? (key === "owner" ? "Ando" : "")}
+              defaultValue={
+                p?.[key as keyof StudioProspect] ??
+                (key === "owner" ? "Ando" : "")
+              }
             />
           </Field>
         ))}

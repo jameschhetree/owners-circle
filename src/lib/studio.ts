@@ -31,6 +31,7 @@ export const episodeSchema = z
     stage: z.enum(["shot", "production", "published", "archived"]),
     owner: text,
     videoUrl: url,
+    audioUrl: url.optional(),
     opusUrl: url,
     nuelinkUrl: url,
     notes: z.string().max(10000),
