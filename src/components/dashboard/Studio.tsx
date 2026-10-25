@@ -102,7 +102,7 @@ const title: Record<View, string> = {
   episodes: "From the edit to the audience.",
   submit: "Submit a new episode.",
   analytics: "Know what’s moving the show.",
-  guide: "Your seat behind the scenes.",
+  guide: "Ando, welcome to the circle.",
 };
 const dateLabel = (d: string) =>
   d
@@ -1344,7 +1344,7 @@ function EpisodeForm({
         <Field label="Producer / owner">
           <input
             name="owner"
-            defaultValue={existing?.owner}
+            defaultValue={existing?.owner ?? "Ando"}
             placeholder="Who is driving this episode?"
           />
         </Field>
@@ -1463,7 +1463,7 @@ function ProspectForm({
                     ? "url"
                     : "text"
               }
-              defaultValue={p?.[key as keyof StudioProspect]}
+              defaultValue={p?.[key as keyof StudioProspect] ?? (key === "owner" ? "Ando" : "")}
             />
           </Field>
         ))}
