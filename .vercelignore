@@ -1,0 +1,12 @@
+.git
+.next
+node_modules
+.env*
+.studio-dev.json
+audit*.mjs
+diag-sc.mjs
+live*.mjs
+probe.mjs
+render_petros.mjs
+shot-sc.mjs
+BACKUP-MANIFEST.json

@@ -1,0 +1,39 @@
+{
+  "name": "owners-circle",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.2",
+    "framer-motion": "^12.38.0",
+    "lenis": "^1.3.23",
+    "lightningcss": "^1.32.0",
+    "lucide-react": "^1.14.0",
+    "next": "^16.4.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "resend": "^6.12.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.4.3",
+    "playwright": "^1.59.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "@vercel/cli-config": {
+      "zod": "^4.6.7"
+    }
+  }
+}
