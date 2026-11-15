@@ -6,6 +6,25 @@ export interface Episode {
   category: string;
   description: string;
   comingSoon: boolean;
+  /** Preview audio, when a file exists. No episode ships one yet. */
+  audioUrl?: string;
+}
+
+export function episodeLabel(index: number): string {
+  return String(index + 1).padStart(2, "0");
+}
+
+export function episodeHref(episode: Episode): string {
+  return `/episodes/${episode.id}`;
+}
+
+export function episodeAudio(episode: Episode): string | null {
+  const url = episode.audioUrl?.trim();
+  return url ? url : null;
+}
+
+export function padCount(count: number): string {
+  return String(count).padStart(2, "0");
 }
 
 export const episodes: Episode[] = [

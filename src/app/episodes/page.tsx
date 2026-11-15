@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
-import { episodes, categories } from "@/data/episodes";
+import { episodes, categories, episodeHref } from "@/data/episodes";
 
 export default function EpisodesPage() {
   const [active, setActive] = useState("All");
@@ -85,7 +86,9 @@ export default function EpisodesPage() {
                         marginTop: "10px",
                       }}
                     >
-                      {ep.title}
+                      <Link href={episodeHref(ep)} className="oc-ep-title-link">
+                        {ep.title}
+                      </Link>
                     </h3>
                     <p
                       style={{
@@ -154,6 +157,12 @@ export default function EpisodesPage() {
           padding: 5px 12px;
           border-radius: 999px;
           font-weight: 600;
+        }
+        .oc-ep-title-link { color: inherit; }
+        .oc-ep-title-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+        .oc-ep-title-link:focus-visible {
+          outline: 2px solid var(--burgundy);
+          outline-offset: 3px;
         }
         @media (max-width: 980px) { .oc-ep-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 620px) { .oc-ep-grid { grid-template-columns: 1fr; } }

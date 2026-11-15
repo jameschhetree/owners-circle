@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
+import { HomeHero } from "@/components/HomeHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { WaitlistButton } from "@/components/Waitlist";
-import { Parallax } from "@/components/Parallax";
 import { FloatingParticles } from "@/components/FloatingParticles";
 import { episodes } from "@/data/episodes";
 
@@ -30,111 +29,7 @@ export default function Home() {
   return (
     <>
       <Nav tone="burgundy" />
-
-      {/* ═══ 1. HERO — RED ═══ */}
-      <section
-        className="oc-grain"
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "160px 28px 120px",
-          backgroundImage:
-            "linear-gradient(165deg, rgba(122,31,43,0.55) 0%, rgba(97,24,35,0.6) 40%, rgba(61,14,20,0.72) 100%), url(/brand/hero-texture.png)",
-          backgroundSize: "cover, cover",
-          backgroundPosition: "center, center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <FloatingParticles />
-
-        <div style={{ maxWidth: "1100px", margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
-          <Reveal>
-            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px" }}>
-              <Image
-                src="/brand/oc-logo.jpg"
-                alt="Owner's Circle"
-                width={72}
-                height={72}
-                style={{
-                  borderRadius: "50%",
-                  border: "2px solid rgba(184,146,63,0.4)",
-                  boxShadow: "0 12px 40px -8px rgba(0,0,0,0.4)",
-                }}
-              />
-              <span className="tag" style={{ color: "var(--gold-light)", fontSize: "12px" }}>
-                A Private Network for Builders
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.06}>
-            <h1
-              className="display"
-              style={{
-                fontSize: "clamp(48px, 9vw, 110px)",
-                lineHeight: 0.95,
-                color: "var(--parchment)",
-                maxWidth: "900px",
-              }}
-            >
-              The modern-day
-              <br />
-              <span className="gold-text" style={{ display: "inline" }}>
-                members only
-              </span>{" "}
-              club.
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.14}>
-            <p
-              style={{
-                fontSize: "clamp(16px, 1.5vw, 20px)",
-                lineHeight: 1.65,
-                color: "var(--parchment)",
-                maxWidth: "480px",
-                margin: "36px 0 0",
-                opacity: 0.55,
-                fontWeight: 400,
-              }}
-            >
-              A podcast, newsletter, and private community for the owners
-              and operators building real companies. Not for everyone.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.22}>
-            <div
-              style={{
-                marginTop: "48px",
-                display: "flex",
-                gap: "14px",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <WaitlistButton
-                intent="Waitlist"
-                source="Home hero"
-                className="pill pill-gold oc-arrow-cta"
-                style={{ fontSize: "13px", padding: "17px 38px" }}
-              >
-                Apply to Join <span className="oc-arrow">→</span>
-              </WaitlistButton>
-              <Link
-                href="/episodes"
-                className="pill-outline on-field oc-arrow-cta"
-                style={{ fontSize: "12px", padding: "15px 30px" }}
-              >
-                Listen Now <span className="oc-arrow">→</span>
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <HomeHero />
 
       {/* ═══ 2. TWO ARMS — WHITE ═══ */}
       <section

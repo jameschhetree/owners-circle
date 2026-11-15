@@ -31,6 +31,8 @@ export function useDashboardStore() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    // Read after mount. localStorage is not available during server render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate the persisted dashboard once
     setStore(loadStore());
     setLoaded(true);
   }, []);
